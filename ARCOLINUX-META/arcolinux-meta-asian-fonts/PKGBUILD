@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-asian-fonts
+pkgver=20.04
+pkgrel=1
+pkgdesc="Installs asian fonts on ArcoLinux"
+arch=('any')
+url="https://arcolinux.info"
+license=('GPL')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+"lohit-fonts"
+"ttf-indic-otf"
+"opendesktop-fonts"
+"otf-ipafont"
+"ttf-hannom"
+"ttf-baekmuk"
+"fonts-tlwg"
+"ttf-khmer"
+"ttf-tibetan-machine"
+)
+

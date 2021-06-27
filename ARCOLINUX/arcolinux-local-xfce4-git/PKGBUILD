@@ -1,0 +1,26 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-local-xfce4-git
+_pkgname=arcolinux-local-xfce4
+_destname1="/etc/skel/.local/share/xfce4/helpers/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=01
+pkgdesc="local for arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-local-xfce4"
+license=('GPL3')
+makedepends=('git')
+replaces=('arcolinux-local-git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

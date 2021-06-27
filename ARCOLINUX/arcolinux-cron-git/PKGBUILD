@@ -1,0 +1,26 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-cron-git
+_pkgname=arcolinux-cron
+_destname1="/etc/cron.daily"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.01
+pkgrel=1
+pkgdesc="Cron jobs for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-cron"
+license=('GPL3')
+makedepends=('git')
+depends=('cronie')
+install='readme.install'
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir$_destname1"
+  install -m755 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+  #chmod +x ${pkgdir}${_destname1}*
+}

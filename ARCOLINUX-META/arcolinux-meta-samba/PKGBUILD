@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois erik.dubois@gmail.com
+
+pkgname=arcolinux-meta-samba
+pkgver=21.04
+pkgrel=15
+arch=('any')
+url="https://wiki.archlinux.org/index.php/samba"
+license=('GPL')
+backup=('etc/samba/smb.conf')
+pkgdesc="Meta package for samba support."
+depends=("samba" "avahi" "nss-mdns" "gvfs-smb")
+optdepends=('nemo-share: Sharing a folder via Nemo'
+			'nautilus-share: Sharing a folder via Nautilus'
+			'caja-share: Sharing a folder via Caja'
+			'kdenetwork-filesharing: Sharing a folder via Dolphin'
+			'thunar-shares-plugin: Sharing a folder via Thunar'
+			'system-config-samba: The Samba configuration tool by Red Hat')
+install=samba.install
+source=('smb.conf.arcolinux')
+md5sums=('2149b06f8cf24113791c8a8efee21d9a')
+package() {
+        install -Dm644 smb.conf.arcolinux $pkgdir/etc/samba/smb.conf
+        mkdir -p $pkgdir/var/lib/samba/usershares
+        chmod 1770 $pkgdir/var/lib/samba/usershares
+}

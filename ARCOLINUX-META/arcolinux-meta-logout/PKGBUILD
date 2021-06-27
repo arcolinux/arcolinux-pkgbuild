@@ -1,0 +1,15 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-logout
+pkgver=21.06
+pkgrel=01
+pkgdesc="arcolinux logout meta"
+arch=('any')
+url="https://github.com/arcolinux/$pkgname"
+license=('GPL3')
+depends=(
+	'arcolinux-betterlockscreen-git'
+	'arcolinux-logout-git'
+	'arcolinux-logout-themes-git'
+	'betterlockscreen-git'
+)
+

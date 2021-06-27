@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-local-repo-git
+_pkgname=arcolinux-local-repo
+_destname1="/opt/arcolinux-local-repo/x86_64"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=19.11
+pkgrel=1
+pkgdesc="Local repository for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-local-repo"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	#install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	#install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}/x86_64/* ${pkgdir}${_destname1}
+}

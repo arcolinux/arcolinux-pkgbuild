@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-betterlockscreen-git
+_pkgname=arcolinux-betterlockscreen
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.06
+pkgrel=02
+pkgdesc="ArcoLinux betterlocksceen"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=('betterlockscreen-git')
+makedepends=('git')
+options=(!strip !emptydirs)
+conflicts=('hefftor-betterlockscreen-gui')
+source=("${url}/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname1} ${pkgdir}
+}

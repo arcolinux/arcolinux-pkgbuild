@@ -1,0 +1,55 @@
+# $Id$
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Contributor: XaBz <xabz.2k5@gmail.com>
+# Edited by Erik Dubois for ArcoLinux
+# Original version 0.2-19
+# is stil version 0.2.-19
+# created version 20 for easy upgrading
+
+pkgname=arcolinux-oblogout
+_pkgname=oblogout
+_destname="/usr/local/bin/"
+pkgver=0.2
+pkgrel=20
+pkgdesc='Openbox logout script'
+arch=('any')
+url='https://launchpad.net/oblogout'
+license=('GPL2')
+depends=('python2-pillow' 'python2-dbus')
+makedepends=('python2-distutils-extra')
+replaces=('arcolinux-oblogout-awesome'
+          'arcolinux-oblogout-bspwm'
+          'arcolinux-oblogout-herbstluftwm'
+          'arcolinux-oblogout-qtile'
+          'arcolinux-oblogout-xmonad')
+backup=('etc/oblogout.conf')
+conflicts=("oblogout")
+source=("https://launchpad.net/oblogout/$pkgver/$pkgver.0/+download/$_pkgname-$pkgver.tar.bz2"
+        'oblogout.patch'
+        "$_pkgname.conf"
+        'ru.po'
+        'arco-oblogout')
+sha256sums=('f80003b85e9f4f1c588675453ea03f40a86fc50546d509ceb69706eb045782a9'
+            'cea52a14df0ef924fcdd63b2e82c14b94cc2a7753994c176621ace9502bd9109'
+            '5f199bae60f4bc3d25f86fbb27ae547ac8d1fa2cc17fe61f173d2cdaa1ba1e7f'
+            'aa8504055ec1e0661c3588cde85aad3267ffa7a42414c106e6ce8bff71f9d883'
+            '65360009fa2714b554d27c89c459aaaeeb2a99bef35a5800447b76b7e5027331')
+prepare() {
+  cd "$_pkgname"
+
+  patch -p0 -i ../oblogout.patch
+  sed -i 's/fromstring/frombytes/' oblogout/__init__.py # FS#46587
+  sed -i '0,/on/s//on2/' "$_pkgname"/*.py
+  cp "$srcdir/ru.po" po
+}
+
+package() {
+  cd "$_pkgname"
+
+  python2 setup.py install --root="$pkgdir"
+  install -m644 "$srcdir/oblogout.conf" "$pkgdir/etc/"
+  install -d -m755 "${pkgdir}${_destname}"
+  install -m755 "${srcdir}/"arco-oblogout "${pkgdir}${_destname}arco-oblogout"
+  #chown root:root ${pkgdir}${_destname}arco-oblogout
+  #chmod 755 ${pkgdir}${_destname}arco-oblogout
+}

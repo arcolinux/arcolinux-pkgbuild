@@ -1,0 +1,40 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-fun
+pkgver=20.12
+pkgrel=1
+pkgdesc="Installs fun applications on ArcoLinux"
+arch=('any')
+url="https://arcolinux.info"
+license=('MIT' 'GPL3')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+'asciiquarium'
+'bash-pipes'
+'bashtop'
+'boxes'
+'cava'
+'cool-retro-term'
+'cowfortune'
+'cmatrix-git'
+'cpufetch-git'
+'curseradio-git'
+'cxxmatrix-git'
+'figlet'
+'gotop-bin'
+'lolcat'
+'mc'
+'pfetch'
+'python-pywal'
+'ranger'
+'sl'
+'slurm'
+'toilet'
+'tty-clock'
+'ufetch-git'
+'ufetch-arco-git'
+'wttr'
+)
+

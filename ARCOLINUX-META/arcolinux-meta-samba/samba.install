@@ -1,0 +1,84 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+add_users() {
+    _l="/etc/login.defs"
+    _p="/etc/passwd"
+ 
+    ## get mini UID limit ##
+    l=$(grep "^UID_MIN" $_l)
+ 
+    ## get max UID limit ##
+    l1=$(grep "^UID_MAX" $_l)
+ 
+    ## use awk to print if UID >= $MIN and UID <= $MAX and shell is not /sbin/nologin   ##
+    users=$(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max  && $7 != "/sbin/nologin" ) print $0 }' "$_p" | cut -d: -f1)
+    for i in $users; do
+        msg "Adding user '$i' to user-group 'sambashare'"
+        usermod -a -G sambashare $i
+    done
+}
+
+add_group() {
+    getent group "sambashare" &>/dev/null || groupadd -r sambashare
+    add_users
+    chgrp sambashare /var/lib/samba/usershares
+    #chown root:sambashare /var/lib/samba/usershares
+}
+
+post_upgrade() {
+  add_group
+  echo
+  	msg "Please add new users to 'sambashare' group"
+    echo
+    msg "Add a (new) user + password to Samba with this command"
+    echo
+    msg "           sudo smbpasswd -a username"
+  echo
+}
+
+post_install() {
+  #samba services
+    msg "Enabling smb services..."
+    echo
+  systemctl is-active smb >/dev/null || systemctl enable smb
+    msg "Enabling nmb services..."
+    echo
+  systemctl is-active nmb >/dev/null || systemctl enable nmb
+    msg "Enabling avahi services..."
+  systemctl is-active avahi-daemon >/dev/null || systemctl enable avahi-daemon
+  	echo
+  add_group
+  echo
+
+  tput setaf 3;
+  	echo
+  	echo "     All services should now be enabled."
+  	echo "     Please add new users to 'sambashare' group."
+  	echo "     Add a (new) user + password to Samba with this command"
+  	echo "             sudo smbpasswd -a username"
+  	echo "     Create a password to connect to Samba"
+    echo "     Edit the samba configuration file at"
+    echo "             /etc/samba/smb.conf"
+    echo "     Other example config files present in that folder"
+  	echo "     Reboot your system, so changes can take effect."
+  tput sgr0;
+}
+
+post_remove() {
+  msg "Disabling all Samba services..."
+  echo
+  ! systemctl is-enabled smb >/dev/null || systemctl disable smb
+  ! systemctl is-enabled nmb >/dev/null || systemctl disable nmb
+  msg "Delete sambashare group"
+  echo
+  ! getent group sambashare || groupdel sambashare
+  echo
+  	msg "Samba services should now be disabled. Reboot your system."
+  echo
+}

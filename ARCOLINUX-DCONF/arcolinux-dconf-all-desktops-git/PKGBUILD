@@ -1,0 +1,50 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-dconf-all-desktops-git
+_pkgname=arcolinux-dconf-all-desktops
+_destname1="/etc/skel/.config/dconf/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=01
+pkgdesc="Dconf file for ArcoLinux Iso"
+arch=('any')
+url="https://github.com/arcolinux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('arcolinux-budgie-dconf-git'
+	'arcolinux-cinnamon-dconf-git'
+	'arcolinux-deepin-dconf-git'
+	'arcolinux-gnome-dconf-git'
+	'arcolinux-mate-dconf-git'
+	'arcolinux-plasma-dconf-git'
+	'arcolinux-ukui-dconf-git')
+replaces=('arcolinux-dconf-git'
+	'arcolinux-awesome-dconf-git'
+	'arcolinux-bspwm-dconf-git'
+	'arcolinux-cwm-dconf-git'
+	'arcolinux-dwm-dconf-git'
+	'arcolinux-fvwm3-dconf-git'
+	'arcolinux-herbstluftwm-dconf-git'
+	'arcolinux-i3wm-dconf-git'
+	'arcolinux-icewm-dconf-git'
+	'arcolinux-jwm-dconf-git'
+	'arcolinux-lxqt-dconf-git'
+	'arcolinux-openbox-dconf-git'
+	'arcolinux-qtile-dconf-git'
+	'arcolinux-spectrum-dconf-git'
+	'arcolinux-xfce-dconf-git'
+	'arcolinux-xmonad-dconf-git'
+	'arcolinux-xtended-dconf-git'
+)
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

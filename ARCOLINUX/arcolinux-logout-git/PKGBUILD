@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-logout-git
+_pkgname=arcolinux-logout
+_destname1="/usr"
+_destname2="/etc"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.06
+pkgrel=01
+pkgdesc="arcolinux logout"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=('libwnck3' 'python-cairo' 'betterlockscreen-git' 'arcolinux-betterlockscreen-git' )
+makedepends=('git')
+options=(!strip !emptydirs)
+replaces=(hefftor-skel-app-git hefftor-skelap-git)
+source=("${url}/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname1} ${pkgdir}
+	cp -r ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname2} ${pkgdir}
+}

@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-lxqt-applications-add-git
+_pkgname=arcolinux-lxqt-applications-add
+_destname1="/etc/skel/.local/share/applications/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.01
+pkgrel=1
+pkgdesc="Show or not show applications in Lxqt"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-lxqt-applications-add"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

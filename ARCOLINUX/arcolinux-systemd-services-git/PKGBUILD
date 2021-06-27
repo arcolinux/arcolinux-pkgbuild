@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-systemd-services-git
+_pkgname=arcolinux-systemd-services
+_destname1="/etc"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.03
+pkgrel=1
+pkgdesc="Systemd services ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-systemd-services"
+license=('GPL3')
+makedepends=('git')
+#depends=('chaotic-keyring' 'chaotic-mirrorlist')
+install=arcolinux-systemd-services-git.install
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir$_destname1"
+  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+}

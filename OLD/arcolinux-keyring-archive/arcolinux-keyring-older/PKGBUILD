@@ -1,0 +1,28 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+
+pkgname=arcolinux-keyring-git
+pkgver=20180224
+pkgrel=1
+pkgdesc='arcolinux PGP keyring'
+arch=('any')
+url='https://github.com/arcolinux/arcolinux-keyring'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile'
+        'arcolinux.gpg'
+        'arcolinux-revoked'
+        'arcolinux-trusted')
+
+sha256sums=('69362f9b12c7ba7363d24ac5e41fe6d03c42733005b5816c7f68e6a9aa777c92'
+            'aeb12f1104061e9b89ade47cc88174a54a171a3c1f7705db2d6d14eb1fcf1679'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}
+# -*- mode: bash;-*-

@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-sddm-fralonra-git
+_pkgname=arcolinux-sddm-fralonra
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.02
+pkgrel=7
+pkgdesc="Chinese Painting SDDM theme adapted for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=('qt5-graphicaleffects')
+install=$pkgname.install
+makedepends=('git')
+options=(!strip !emptydirs)
+replaces=('arcolinux-sddm-theme-git')
+source=(${_pkgname}::git+$url)
+sha256sums=('SKIP')
+package() {
+  install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+  install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+  cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
+}

@@ -1,0 +1,32 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-fonts-git
+_pkgname=arcolinux-fonts
+_destname1="/usr/share/fonts/TTF/"
+_destname2="/usr/share/fonts/OTF/"
+_destname3="/usr/share/arcolinux/licenses/arcolinux-fonts/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=01
+pkgdesc="fonts mainly for conkies of arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-fonts"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	install -m644  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	install -m644  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+}

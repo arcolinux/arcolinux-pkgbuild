@@ -1,0 +1,31 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-spectrwm-git
+_pkgname=arcolinux-spectrwm
+_destname1="/etc/skel/.config/"
+#_destname2="/etc/skel/.local/"
+_destname3="/etc/skel/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=04
+pkgdesc="Desktop configuration for ArcoLinux -D -B"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-spectrwm"
+license=('GPL3')
+makedepends=('git')
+depends=('bash' 'arcolinux-logout-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	#install -dm755 ${pkgdir}${_destname2}
+	#cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}.spectrwm.conf* ${pkgdir}${_destname3}.spectrwm.conf
+}

@@ -1,0 +1,14 @@
+read -r -d '' msg << TIPS
+=====================================================\n
+Tip:\n
+Use grub-customizer to change to the vimix theme\n
+or choose another wallpaper\n
+=====================================================\n
+TIPS
+post_install(){
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}

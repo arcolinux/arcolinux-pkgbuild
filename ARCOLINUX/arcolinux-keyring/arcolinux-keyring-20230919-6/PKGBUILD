@@ -1,0 +1,30 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=arcolinux-keyring
+pkgver=20230919
+pkgrel=6
+pkgdesc='ArcoLinux GPG keyring'
+arch=('any')
+url='http:/arcolinux.info'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile'
+        'arcolinux.gpg'
+        'arcolinux-revoked'
+        'arcolinux-trusted')
+validpgpkeys=('93D1CCB2B2421F4B1CD0489774F5DE85A506BF64'  # erik
+              '4B3A1EE5B3C514C9689862C3F1ABB772CE9F7FC0'  # marco
+              '79B328FBCB2C2E8C3B1983244B1B49F7186D8731'  # john
+              '1F69B6F743FBE78CB1D9E27618064BF445855549'  # Brad           
+              'C8B894E2B6410BBEB2B7E5447EC1A5550718AB89'  # Raniel  
+              '7631779EA6A98BE0BA94BA2B02D507C6EFB8CEAA') # steve
+sha256sums=('403ed18306d3631aa70b226873daaa26d09b4ace640e7762bea8e2a65ac0c332'
+            '9d5856fa39af9d26152dd0dbedf89f93ee4a3b0f16516110b9ebf9b8020a4990'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '1749ba9f5d44c6342611acd812bb82d5371c6b9318ff4fc6662fc9aa7a16db61')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}

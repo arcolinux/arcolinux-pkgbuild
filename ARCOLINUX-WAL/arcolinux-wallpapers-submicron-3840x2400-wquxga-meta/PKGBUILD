@@ -1,0 +1,17 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-wallpapers-submicron-3840x2400-wquxga-git-meta
+pkgver=18.9
+pkgrel=2
+pkgdesc="ArcoLinux Wallpapers Submicron 3840x2400-wquxga meta package"
+arch=('any')
+url="https://www.deviantart.com/submicron"
+license=('custom:CC BY-NC-ND 4.0')
+depends=(arcolinux-wallpapers-submicron1-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron2-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron3-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron4-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron5-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron6-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron7-3840x2400-wquxga-git
+		arcolinux-wallpapers-submicron8-3840x2400-wquxga-git
+)

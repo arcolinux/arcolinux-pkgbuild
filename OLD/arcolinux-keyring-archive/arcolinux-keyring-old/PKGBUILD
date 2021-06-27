@@ -1,0 +1,24 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=arcolinux-keyring
+pkgver=20180225
+pkgrel=1
+pkgdesc='ArcoLinux PGP keyring'
+arch=('any')
+url='http:/manjarolinux.org'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile'
+        'arcolinux.gpg'
+        'arcolinux-revoked'
+        'arcolinux-trusted')
+sha256sums=('403ed18306d3631aa70b226873daaa26d09b4ace640e7762bea8e2a65ac0c332'
+            'f8630ecf285367434d932dff9ae5a9106390dfad7893ae8d9b86955563460b71'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}

@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-sddm-theme-git
+_pkgname=arcolinux-sddm-theme
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.01
+pkgrel=2
+pkgdesc="arcolinux sddm theme"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=()
+makedepends=('git')
+options=(!strip !emptydirs)
+replaces=()
+source=("${_pkgname}::git+https://github.com/arcolinux/arcolinux-sddm-theme")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
+}

@@ -1,0 +1,32 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-reflector-simple-git
+_pkgname=arcolinux-reflector-simple
+_destname1="/usr/local/bin/"
+_destname2="/etc/"
+_destname3="/usr/share/applications/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.04
+pkgrel=1
+pkgdesc="Simple GUI wrapper for 'reflector'"
+arch=('any')
+license=('GPL3')
+depends=(bash yad reflector whois geoip bind)
+backup=(etc/$_pkgname.conf)
+url="https://github.com/endeavouros-team/PKGBUILDS/raw/master/reflector-simple"
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha512sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m755  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	install -m644  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	install -m644  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+
+}

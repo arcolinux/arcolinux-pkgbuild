@@ -1,0 +1,7 @@
+post_install() {
+  notify-send -u critical -i "notification-message-IM" 'ArcoLinux News !!' 'Read the update'
+}
+
+post_upgrade() {
+    post_install
+}

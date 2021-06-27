@@ -1,0 +1,27 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinuxb-installer-git
+_pkgname=arcolinuxb-installer
+_destname1="/usr/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.04
+pkgrel=84
+pkgdesc="ArcoLinux ArcoLinuxB Installer"
+arch=('any')
+url="https://github.com/arcolinux/arcolinuxb-installer"
+license=('GPL3')
+makedepends=('git')
+depends=('libwnck3')
+provides=("${pkgname}")
+conflicts=("arcolinuxb-installer-dev-git")
+install='readme.install'
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+${url}")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+	mkdir -p "${pkgdir}${_destname1}"
+	cp -r "${srcdir}/${_pkgname}/${_destname1}/"* "${pkgdir}${_destname1}"
+	#mkdir -p "${pkgdir}${_destname2}"
+	#cp -r "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname2}/"* "${pkgdir}${_destname2}"
+}

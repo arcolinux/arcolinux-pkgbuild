@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-faces-git
+_pkgname=arcolinux-faces
+_destname1="/usr/share/pixmaps/faces/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.01
+pkgrel=1
+pkgdesc="Faces - Avatars created for arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-faces"
+license=('GPL3')
+makedepends=('git')
+depends=()
+optdepends=('mugshot')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

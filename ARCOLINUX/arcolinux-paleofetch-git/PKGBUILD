@@ -1,0 +1,42 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-paleofetch-git
+_pkgname=arcolinux-paleofetch
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.03
+pkgrel=2
+pkgdesc="Configuration files for ArcoLinux Iso"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-paleofetch"
+license=('GPL3')
+makedepends=('git' 'cmake' 'pciutils')
+depends=('libx11')
+provides=("${pkgname}")
+conflicts=('paleofetch' 'paleofetch-git' 'paleofetch-croco')
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+
+prepare() {
+	mkdir -p "$srcdir/$_pkgname/arco-paleofetch/build"
+}
+
+build() {
+	cd "$srcdir/$_pkgname/arco-paleofetch/"
+	export CFLAGS+=" -D"$(./config_scripts/battery_config.sh)
+	cd "$srcdir/$_pkgname/arco-paleofetch/build/"
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr/local \
+		-DCMAKE_UNITY_BUILD=ON \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+		..
+	make
+}
+
+package() {
+	cd "$srcdir/$_pkgname/arco-paleofetch/build"
+	make DESTDIR="$pkgdir" install
+
+	cd "$srcdir/$_pkgname/arco-paleofetch/"
+	install -Dm644 LICENSE "$pkgdir/usr/share/arcolinux/licenses/${pkgname%-git}/LICENSE"
+}

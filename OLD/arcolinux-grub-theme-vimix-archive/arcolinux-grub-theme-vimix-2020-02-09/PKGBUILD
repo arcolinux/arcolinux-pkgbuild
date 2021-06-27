@@ -1,0 +1,42 @@
+# Maintainer: levinit <levinit@outlook.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
+# Editor : Erik Dubois <erik.dubois@gmail.com>
+
+pkgname=arcolinux-grub-theme-vimix-git
+_pkgname=arcolinux-grub-theme-vimix
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=2020.02.09
+pkgrel=1
+pkgdesc="vimix grub theme"
+arch=(any)
+url="https://github.com/erikdubois/grub2-themes"
+license=('GPL3')
+depends=(grub)
+optdepends=('grub-customizer')
+makedepends=('git')
+install=${pkgname}.install
+source=("$pkgname::git+https://github.com/erikdubois/grub2-themes.git")
+md5sums=('SKIP')
+package() {
+	#cp ../backgrounds/arcolinux.png $srcdir/$pkgname/backgrounds/1080p/background-vimix.png
+	cp ../backgrounds/* $srcdir/$pkgname/backgrounds/1080p
+
+	#cp $srcdir/$pkgname/assets/assets-white/icons-1080p/arcolinux.png $srcdir/$pkgname/assets/assets-white/icons-1080p/gnu-linux.png
+	sed -i 's/top = 30%/top = 20%/g' $srcdir/$pkgname/config/theme-1080p.txt
+	#sed -i 's/width = 45%/width = 70%/g' $srcdir/$pkgname/config/theme-1080p.txt
+    #sed -i 's/left = 30%/left = 15%/g' $srcdir/$pkgname/common/theme.txt
+    sed -i 's/width = 45%/width = 70%/g' $srcdir/$pkgname/config/theme-1080p.txt
+    sed -i 's/height = 60%/height = 70%/g' $srcdir/$pkgname/config/theme-1080p.txt
+    #sed -i 's/item_font = "Unifont Regular 16"/item_font = "Terminus Regular 14"/g' $srcdir/$pkgname/config/theme-1080p.txt
+	#sed -i 's/font = "Unifont Regular 16"/font = "Terminus Regular 14"/g' $srcdir/$pkgname/config/theme-1080p.txt
+    sed -i 's/desktop-image: "background.jpg"/desktop-image: "background.png"/g' $srcdir/$pkgname/config/theme-1080p.txt 
+    install -d "$pkgdir/boot/grub/themes/Vimix"
+    install -d "$pkgdir/boot/grub/themes/Vimix/icons"
+    cp ../fonts/* $pkgdir/boot/grub/themes/Vimix/
+    install -Dm 755 $srcdir/$pkgname/backgrounds/1080p/* $pkgdir/boot/grub/themes/Vimix/
+    install -Dm 755 $srcdir/$pkgname/common/* $pkgdir/boot/grub/themes/Vimix
+    install -Dm 755 $srcdir/$pkgname/assets/assets-white/icons-1080p/* $pkgdir/boot/grub/themes/Vimix/icons/
+    install -Dm 755 $srcdir/$pkgname/config/theme-1080p.txt $pkgdir/boot/grub/themes/Vimix/theme.txt
+    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+    install -m644  ${srcdir}/${pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+}

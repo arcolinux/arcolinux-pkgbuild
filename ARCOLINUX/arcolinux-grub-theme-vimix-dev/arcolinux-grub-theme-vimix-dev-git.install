@@ -1,0 +1,13 @@
+read -r -d '' msg << TIPS
+\n=====================================================\n
+Tip:\n
+Use ArcoLinux Tweak Tool to change to another wallpaper\n
+=====================================================\n
+TIPS
+post_install(){
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}

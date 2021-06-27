@@ -1,0 +1,42 @@
+#======================= Global Settings =====================================
+[global]
+   workgroup = WORKGROUP
+   server string = Samba Server
+   server role = standalone server
+   log file = /var/log/samba/%m.log
+   max log size = 50
+   dns proxy = no 
+   map to guest = Bad Password
+   passwd program = /usr/bin/passwd %u
+   unix password sync = Yes
+   client min protocol = SMB2
+   usershare allow guests = true
+   usershare max shares =  50
+   usershare owner only = true
+   usershare path = /var/lib/samba/usershares
+
+[homes]
+   comment = Home Directories
+   browseable = no
+   writable = yes
+
+[printers]
+   comment = All Printers
+   path = /usr/spool/samba
+   browseable = no
+   guest ok = no
+   writable = no
+   printable = yes
+
+
+# Anyone can read and write in this folder
+# create the folder in your home folder and
+# change erik into your username
+# delete the ; characters to activate
+
+;[SHARED]
+;path = /home/erik/SHARED
+;browseable = yes
+;guest ok = yes
+;public = yes
+;writable = yes

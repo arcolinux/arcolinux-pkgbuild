@@ -1,0 +1,24 @@
+pre_install() {
+	rm -f etc/systemd/system/pacman-init.service
+	rm -f etc/systemd/system/multi-user.target.wants/pacman-init.service
+}
+
+
+pre_upgrade() {
+	pre_install	
+}
+
+
+post_install() {
+	echo
+	tput setaf 3;
+	echo "We have updated your pacman-init.service."
+	echo "It will also include Chaotic keys."
+	tput sgr0;
+	echo
+}
+
+post_upgrade() {
+	post_install
+}
+

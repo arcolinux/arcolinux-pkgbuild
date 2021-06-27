@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-utilities
+pkgver=21.04
+pkgrel=1
+pkgdesc="Installs utilities on ArcoLinux"
+arch=('any')
+url="https://arcolinux.info"
+license=('MIT' 'GPL3')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+'bashtop'
+'cpu-x'
+'duf-bin'
+'htop'
+'gtop'
+'gotop-bin'
+'glances'
+'powertop'
+'vtop'
+)
+

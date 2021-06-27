@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-mirrorlist-spinoff-git
+_pkgname=arcolinux-mirrorlist-spinoff
+_destname1="/etc/pacman.d/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.01
+pkgrel=2
+pkgdesc="ArcoLinux mirrorlist for use by pacman for spinoffs"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-mirrorlist-spinoff"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+backup=(etc/pacman.d/arcolinux-mirrorlist)
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

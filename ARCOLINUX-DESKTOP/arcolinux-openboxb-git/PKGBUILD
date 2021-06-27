@@ -1,0 +1,31 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-openboxb-git
+_pkgname=arcolinux-openbox
+_destname1="/etc/skel/.config/openbox/"
+_destname2="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=05
+pkgdesc="Openbox configs from arcolinuxb"
+arch=('any')
+url="Desktop configuration for ArcoLinux -D -B"
+license=('GPL3')
+conflicts=("arcolinux-openbox-xtended-git" "arcolinux-openbox-git" "arcolinux-lxqt-git")
+makedepends=('git')
+depends=('bash' 'arcolinux-logout-git')
+replaces=('arcolinux-openbox-configs-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	#echo "dex $HOME/.config/autostart/arcolinux-welcome-app.desktop" | tee -a "${srcdir}/${pkgname}${_destname1}"autostart
+	sed -i "s/#dex/dex/g" ${srcdir}/${pkgname}${_destname1}autostart
+	mkdir -p "${pkgdir}${_licensedir}${pkgname}"
+	mv "${srcdir}/${pkgname}/"LICENSE "${pkgdir}${_licensedir}${pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${_destname1}"
+	cp -r "${srcdir}/${pkgname}/${_destname1}/"* "${pkgdir}${_destname1}"
+	mkdir -p "${pkgdir}${_destname2}"
+	cp -r "${srcdir}/${pkgname}/${_destname2}/"picom.conf "${pkgdir}${_destname2}"
+}

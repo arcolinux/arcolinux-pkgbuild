@@ -1,0 +1,23 @@
+
+post_install() {
+	systemctl enable virtual-machine-check.service
+	systemctl start virtual-machine-check.service
+}
+
+post_upgrade() {
+	if systemctl --all --type service | grep -q "update-mirrors.service";then
+    		systemctl disable update-mirrors.service
+	fi
+	echo
+	systemctl enable virtual-machine-check.service
+	systemctl start virtual-machine-check.service
+}
+
+
+post_remove() {
+	if systemctl --all --type service | grep -q "update-mirrors.service";then
+    		systemctl disable update-mirrors.service
+	fi
+	#scripts removes it
+	#systemctl disable virtual-machine-check.service
+}

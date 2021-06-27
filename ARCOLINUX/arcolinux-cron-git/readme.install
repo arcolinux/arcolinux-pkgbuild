@@ -1,0 +1,16 @@
+
+post_install() {
+	systemctl enable cronie.service
+	systemctl start cronie.service
+	echo -e "\n** cron job started in /etc/cron.daily **\n"
+}
+
+post_upgrade() {
+    post_install
+}
+
+
+post_remove() {
+	systemctl stop cronie.service
+	systemctl disable cronie.service
+}

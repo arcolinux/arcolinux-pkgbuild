@@ -1,0 +1,22 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-wallpapers-submicron-5120x2880-5K-git
+_pkgname=arcolinux-wallpapers-submicron-5120x2880-5K
+pkgver=18.9
+pkgrel=4
+pkgdesc="ArcoLinux Wallpapers Submicron 5120x2880-5K"
+arch=('any')
+url="https://www.deviantart.com/submicron"
+license=('custom:CC BY-NC-ND 4.0')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+	cd "${srcdir}/${pkgname}"
+	install -d "${pkgdir}/usr/share/backgrounds/${_pkgname}"
+	install -m644 ${srcdir}/${pkgname}/*.jpg "${pkgdir}/usr/share/backgrounds/${_pkgname}"
+	install -m644 ${srcdir}/${pkgname}/*.png "${pkgdir}/usr/share/backgrounds/${_pkgname}"
+	install -d "${pkgdir}/usr/share/arcolinux/licenses/${_pkgname}"
+	install -m644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/arcolinux/licenses/${_pkgname}"
+}

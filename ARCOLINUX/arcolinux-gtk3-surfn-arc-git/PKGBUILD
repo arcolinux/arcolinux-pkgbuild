@@ -1,0 +1,26 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-gtk3-surfn-arc-git
+_pkgname=arcolinux-gtk3-surfn-arc
+_destname1="/etc/skel/.config/gtk-3.0/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.06
+pkgrel=01
+pkgdesc="gtk3 config for arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-gtk3-surfn-arc"
+license=('GPL3')
+makedepends=('git')
+depends=('bash')
+conflicts=('arcolinux-gtk3-surfn-arc-breeze-git' 'arcolinux-gtk3-sardi-arc-git' 'arcolinux-gtk3-surfn-plasma-dark-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

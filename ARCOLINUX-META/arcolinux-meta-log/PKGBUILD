@@ -1,0 +1,16 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-log
+pkgver=21.06
+pkgrel=02
+pkgdesc="Installs logging utilities on ArcoLinux"
+arch=('any')
+url="https://arcolinux.info"
+license=('MIT' 'GPL3')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+'gnome-logs'
+'gnome-system-log'
+)

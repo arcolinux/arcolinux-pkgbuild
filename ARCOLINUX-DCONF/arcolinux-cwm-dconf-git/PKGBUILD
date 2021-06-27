@@ -1,0 +1,54 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-cwm-dconf-git
+_pkgname=arcolinux-cwm-dconf
+_destname1="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=20.11
+pkgrel=1
+pkgdesc="Configuration files for ArcoLinux Iso"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-cwm-dconf"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=(
+arcolinux-awesome-dconf-git
+arcolinux-bspwm-dconf-git
+arcolinux-budgie-dconf-git
+arcolinux-cinnamon-dconf-git
+#arcolinux-cwm-dconf-git
+arcolinux-deepin-dconf-git
+arcolinux-dwm-dconf-git
+arcolinux-enlightenment-dconf-git
+arcolinux-dconf-git
+arcolinux-gnome-dconf-git
+arcolinux-herbstluftwm-dconf-git
+arcolinux-i3-dconf-git
+arcolinux-icewm-dconf-git
+arcolinux-jwm-dconf-git
+arcolinux-kodi-dconf-git
+arcolinux-lxqt-dconf-git
+arcolinux-mate-dconf-git
+arcolinux-openbox-dconf-git
+arcolinux-plasma-dconf-git
+arcolinux-plasma-nemesis-dconf-git
+arcolinux-qtile-dconf-git
+arcolinux-spectrwm-dconf-git
+arcolinux-sway-dconf-git
+arcolinux-ukui-dconf-git
+arcolinux-xfce-dconf-git
+arcolinux-xmonad-dconf-git
+arcolinux-xtended-dconf-git
+)
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

@@ -1,0 +1,31 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-dwm-st-git
+_pkgname=arcolinux-dwm-st
+_destname1="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=20.12
+pkgrel=6
+pkgdesc="Configuration files for ArcoLinux Dwm"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-dwm-st"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('st')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+
+package() {
+
+    cd "$srcdir/$_pkgname/etc/skel/.config/arco-st"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

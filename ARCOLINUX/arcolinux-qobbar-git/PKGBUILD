@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-qobbar-git
+_pkgname=arcolinux-qobbar
+_destname1="/etc/skel/.config/qobbar/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=20.12
+pkgrel=2
+pkgdesc="qobbar config for arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-qobbar"
+license=('GPL3')
+makedepends=('git')
+depends=('thunar' 'xfce4-taskmanager' 'pavucontrol' 'xfce4-power-manager')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

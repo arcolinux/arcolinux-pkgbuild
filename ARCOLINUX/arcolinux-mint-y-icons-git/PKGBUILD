@@ -1,0 +1,20 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-mint-y-icons-git
+_pkgname=arcolinux-mint-y-icons
+pkgver=21.01
+pkgrel=1
+_destname="/usr/share/icons/"
+pkgdesc="Icon theme built for Linux Mint. Uses elements of Vibrancy and Moka."
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-mint-y-icons"
+license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
+makedepends=('git')
+options=(!strip !emptydirs)
+source=("${_pkgname}"::git+$url)
+#source=("${_pkgname}"::git+https://github.com/linuxmint/mint-y-icons.git)
+sha256sums=('SKIP')
+
+package() {
+  install -dm 755 ${pkgdir}${_destname}
+  cp -r ${srcdir}/$_pkgname/$_pkgname/* ${pkgdir}${_destname}
+}

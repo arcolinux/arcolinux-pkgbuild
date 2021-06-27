@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-logout-themes-git
+_pkgname=arcolinux-logout-themes
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.04
+pkgrel=01
+pkgdesc="arcolinux logout themes"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=('arcolinux-logout-git')
+makedepends=('git')
+options=(!strip !emptydirs)
+replaces=()
+#source=("${url}/archive/${pkgver}-${pkgrel}.tar.gz")
+source=("${_pkgname}::git+https://github.com/arcolinux/arcolinux-logout-themes")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
+}

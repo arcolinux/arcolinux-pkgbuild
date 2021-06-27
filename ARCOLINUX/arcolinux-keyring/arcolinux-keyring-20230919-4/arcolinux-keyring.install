@@ -1,0 +1,30 @@
+post_upgrade() {
+	if usr/bin/pacman-key -l >/dev/null 2>&1; then
+		usr/bin/pacman-key --populate arcolinux
+		#marco
+		#pacman-key --recv-keys F1ABB772CE9F7FC0
+		pacman-key --lsign-key F1ABB772CE9F7FC0
+		#john
+		#pacman-key --recv-keys 4B1B49F7186D8731
+		pacman-key --lsign-key 4B1B49F7186D8731
+		#stephen
+		#pacman-key --recv-keys 02D507C6EFB8CEAA
+		pacman-key --lsign-key 02D507C6EFB8CEAA
+		#brad
+		#pacman-key --recv-keys 18064BF445855549
+		pacman-key --lsign-key 18064BF445855549
+		#raniel
+		#pacman-key --recv-keys 7EC1A5550718AB89
+		pacman-key --lsign-key 7EC1A5550718AB89
+
+	else
+		echo " >>> Run \`pacman-key --init\` to set up your pacman keyring."
+		echo " >>> Then run \`pacman-key --populate arcolinux\` to install the ArcoLinux keyring."
+	fi
+}
+
+post_install() {
+	if [ -x usr/bin/pacman-key ]; then
+		post_upgrade
+	fi
+}

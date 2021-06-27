@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-config-plasma-git
+_pkgname=arcolinux-config-plasma
+_destname="/etc"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.06
+pkgrel=01
+pkgdesc="Configuration files for ArcoLinuxB Plasma"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-config-plasma"
+license=('GPL3')
+makedepends=('git')
+conflicts=('arcolinux-config-all-desktops-git' 'arcolinux-config-plasma-nemesis-git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r  ${srcdir}/${_pkgname}${_destname} ${pkgdir}${_destname}
+}

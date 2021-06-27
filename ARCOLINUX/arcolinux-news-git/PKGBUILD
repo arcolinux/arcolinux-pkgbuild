@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-news-git
+_pkgname=arcolinux-news
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=20.5
+pkgrel=8
+pkgdesc="arcolinux news"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=()
+makedepends=('git')
+options=(!strip !emptydirs)
+source=("${url}/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname1} ${pkgdir}
+}

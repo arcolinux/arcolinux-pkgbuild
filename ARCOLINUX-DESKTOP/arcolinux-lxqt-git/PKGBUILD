@@ -1,0 +1,38 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-lxqt-git
+_pkgname=arcolinux-lxqt
+_destname1="/etc/skel/.config/"
+_destname2="/etc/skel/"
+_destname3="/etc/skel/.local/share/file-manager/actions/"
+_destname4="/usr/local/bin/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.05
+pkgrel=07
+pkgdesc="Desktop configuration for ArcoLinux -D -B"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-lxqt"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('arcolinux-openboxb-git' 'arcolinux-openbox-git' 'arcolinux-openbox-xtended-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}.xscreensaver ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+
+	install -dm755 ${pkgdir}${_destname4}
+	cp -r  ${srcdir}/${_pkgname}${_destname4}* ${pkgdir}${_destname4}	
+}

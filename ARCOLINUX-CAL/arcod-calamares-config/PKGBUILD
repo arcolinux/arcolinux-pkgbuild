@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcod-calamares-config-git
+_pkgname=arcod-calamares-config
+_destname="/etc/calamares"
+_licensedir="/usr/share/arcolinuxd/licenses/"
+pkgver=21.06
+pkgrel=04
+pkgdesc="calamares for arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('arcod-calamares-config-dev-git' 'arcod-calamares-config-next-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
+}

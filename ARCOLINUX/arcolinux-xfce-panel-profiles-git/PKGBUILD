@@ -1,0 +1,26 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-xfce-panel-profiles-git
+_pkgname=arcolinux-xfce-panel-profiles
+_destname1="/etc/skel/.local/share/xfce4-panel-profiles/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.04
+pkgrel=02
+pkgdesc="ArcoLinux Xfce Panel Profile for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+depends=()
+replaces=('arcolinux-xfce4-panel-profiles-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
