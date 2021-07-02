@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-utilities
-pkgver=21.04
-pkgrel=1
+pkgver=21.07
+pkgrel=01
 pkgdesc="Installs utilities on ArcoLinux"
 arch=('any')
 url="https://arcolinux.info"

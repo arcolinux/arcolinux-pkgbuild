@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-mint-y-icons-git
 _pkgname=arcolinux-mint-y-icons
-pkgver=21.01
-pkgrel=1
+pkgver=21.07
+pkgrel=01
 _destname="/usr/share/icons/"
 pkgdesc="Icon theme built for Linux Mint. Uses elements of Vibrancy and Moka."
 arch=('any')

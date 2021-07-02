@@ -6,6 +6,7 @@ destination2=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_3party/x86_64/"
 destination3=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_iso/x86_64/"
 destination4=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_testing/x86_64/"
 destination5=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_xlarge/x86_64/"
+destination6=$HOME"/ARCO/TEST/"
 
 destiny=$destination4
 
@@ -16,8 +17,8 @@ CHOICE=1
 pwdpath=$(echo $PWD)
 pwd=$(basename "$PWD")
 
-#which packages are always going to build with makepkg or choice 2
-makepkglist="arcolinux-teamviewer arcolinux-tweak-tool-dev-git arcolinux-tweak-tool-git"
+#which packages are always going to be build with makepkg or choice 2
+#makepkglist="arcolinux-dwm-slstatus-git arcolinux-dwm-st-git arcolinux-conky-collection-git arcolinux-conky-collection-plasma-git arco-dwm arcolinux-betterlockscreen arcolinux-lightdm-gtk-greeter arcolinux-lightdm-gtk-greeter-plasma arcolinux-logout-git arcolinux-logout-themes-git arcolinux-qobbar-git arcolinux-teamviewer arcolinux-tweak-tool-dev-git arcolinux-tweak-tool-git arco-dwm"
 
 for i in $makepkglist
 do
@@ -65,6 +66,24 @@ else
   makepkg --sign
 fi
 
+#echo "==>Begin of pwd " $pwd
+#echo "==>Begin of destiny " $destiny
+
+if [ $pwd == "arcolinux-calamares-tool-git" ] ; then
+	destiny=$destination3
+fi
+
+if [ $pwd == "arcolinux-calamares-tool-dev-git" ] ; then
+	destiny=$destination3
+fi
+
+if [ $pwd == "arcolinux-system-installation-git" ] ; then
+	destiny=$destination3
+fi
+
+#echo "<==End of pwd " $pwd
+#echo "<==End of destiny " $destiny
+
 echo "Moving created files to " $destiny
 echo "#############################################################################################"
 mv $search*pkg.tar.zst $destiny
@@ -84,7 +103,7 @@ if [[ -f $wpdpath/*.tar.gz ]]; then
   rm $pwdpath/*.tar.gz
 fi
 
-tput setaf 8
+tput setaf 10
 echo "#############################################################################################"
 echo "###################                       build done                   ######################"
 echo "#############################################################################################"

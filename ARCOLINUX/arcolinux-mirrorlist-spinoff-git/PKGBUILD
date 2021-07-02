@@ -3,8 +3,8 @@ pkgname=arcolinux-mirrorlist-spinoff-git
 _pkgname=arcolinux-mirrorlist-spinoff
 _destname1="/etc/pacman.d/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.01
-pkgrel=2
+pkgver=21.07
+pkgrel=01
 pkgdesc="ArcoLinux mirrorlist for use by pacman for spinoffs"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-mirrorlist-spinoff"
@@ -20,6 +20,6 @@ package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-	install -dm755 ${pkgdir}${_destname1}
-	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	#install -dm755 ${pkgdir}${_destname1}
+	#install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

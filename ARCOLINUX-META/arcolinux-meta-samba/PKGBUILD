@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois erik.dubois@gmail.com
 
 pkgname=arcolinux-meta-samba
-pkgver=21.04
-pkgrel=15
+pkgver=21.07
+pkgrel=01
 arch=('any')
 url="https://wiki.archlinux.org/index.php/samba"
 license=('GPL')

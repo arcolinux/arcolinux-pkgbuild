@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
 # Written to be used on 64 bits computers
 # Author 	: 	Erik Dubois
@@ -41,39 +41,16 @@ echo "Continue ?  (y/Y)"
 echo "#############################################################################################"
 read response
 
-#arcolinux-dwm-git \
-#arcolinux-enlightenment-git \
+# use ls -d */ > list to get the list of the created githubs and copy/paste in
 
 array="
-arcolinux-awesome-git \
-arcolinux-bspwm-git \
-arcolinux-budgie-git \
-arcolinux-cinnamon-git \
-arcolinux-cwm-git \
-arcolinux-deepin-git \
-arcolinux-dwm-git \
-arcolinux-dwm-nemesis-git \
-arcolinux-enlightenment-git \
-arcolinux-fvwm3-git \
-arcolinux-gnome-git \
-arcolinux-herbstluftwm-git \
-arcolinux-i3wm-git \
-arcolinux-icewm-git \
-arcolinux-jwm-git \
-arcolinux-lxqt-git \
-arcolinux-mate-git \
-arcolinux-openboxb-git \
-arcolinux-openbox-git \
-arcolinux-openbox-xtended-git \
-arcolinux-plasma-git \
-arcolinux-plasma-nemesis-git \
-arcolinux-qtile-git \
-arcolinux-spectrwm-git \
-arcolinux-sway-git \
-arcolinux-ukui-git \
-arcolinux-xfce-git \
-arcolinux-xmonad-polybar-git \
-arcolinux-xmonad-xmobar-git \
+arcolinux-meta-asian-fonts/
+arcolinux-meta-fun/
+arcolinux-meta-log/
+arcolinux-meta-logout/
+arcolinux-meta-samba/
+arcolinux-meta-steam/
+arcolinux-meta-utilities/
 "
 
 if [[ "$response" == [yY] ]]; then
