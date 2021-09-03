@@ -1,17 +1,16 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arco-calamares-config-b-git
-_pkgname=arco-calamares-config-b
+pkgname=arcob-calamares-config-cutefish-git
+_pkgname=arcob-calamares-config-cutefish
 _destname="/etc/calamares"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.07
-pkgrel=02
+pkgver=21.09
+pkgrel=04
 pkgdesc="calamares for arcolinux"
 arch=('any')
 url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 depends=()
-conflicts=('arco-calamares-config-dev-git' 'arco-calamares-config-git' 'arco-calamares-config-git-git' 'arco-calamares-config-next-git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")

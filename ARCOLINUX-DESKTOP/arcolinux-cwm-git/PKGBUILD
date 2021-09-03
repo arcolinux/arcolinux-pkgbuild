@@ -6,7 +6,7 @@ _destname2="/etc/skel/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=21.07
 pkgrel=01
-pkgdesc="Configuration files for ArcoLinux Iso"
+pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-cwm"
 license=('GPL3')
@@ -17,9 +17,7 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
 install='readme.install'
-
 package() {
-
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 

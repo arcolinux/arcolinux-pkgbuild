@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-fun
-pkgver=21.07
+pkgver=21.08
 pkgrel=01
 pkgdesc="Installs fun applications on ArcoLinux"
 arch=('any')
@@ -13,8 +13,8 @@ install='readme.install'
 depends=(
 'asciiquarium'
 'bash-pipes'
-'bashtop'
 'boxes'
+'bpytop'
 'cava'
 'cool-retro-term'
 'cowfortune'

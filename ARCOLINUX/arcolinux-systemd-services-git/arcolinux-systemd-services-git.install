@@ -13,7 +13,6 @@ post_install() {
 	echo
 	tput setaf 3;
 	echo "We have updated your pacman-init.service."
-	echo "It will also include Chaotic keys."
 	tput sgr0;
 	echo
 }

@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-desktop-trasher-dev-git
+_pkgname=arcolinux-desktop-trasher-dev
+_destname1="/usr/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.08
+pkgrel=51
+pkgdesc="ArcoLinux Desktop Trasher"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-desktop-trasher-dev"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+conflicts=("arcolinux-desktop-trasher-git")
+install='readme.install'
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+${url}")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+	mkdir -p "${pkgdir}${_destname1}"
+	cp -r "${srcdir}/${_pkgname}/${_destname1}/"* "${pkgdir}${_destname1}"
+}
