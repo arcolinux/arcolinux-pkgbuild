@@ -81,6 +81,10 @@ if [ $pwd == "arcolinux-system-installation-git" ] ; then
 	destiny=$destination3
 fi
 
+if [ $pwd == "arcolinux-sddm-backgrounds-git" ] ; then
+  destiny=$destination5
+fi
+
 #echo "<==End of pwd " $pwd
 #echo "<==End of destiny " $destiny
 
@@ -108,3 +112,12 @@ echo "##########################################################################
 echo "###################                       build done                   ######################"
 echo "#############################################################################################"
 tput sgr0
+
+
+if [ $pwd == "arcolinux-sddm-backgrounds-git" ] ; then
+  tput setaf 1
+  echo "#############################################################################################"
+  echo "Also update this repo : "$destination5
+  echo "#############################################################################################"
+  tput sgr0
+fi

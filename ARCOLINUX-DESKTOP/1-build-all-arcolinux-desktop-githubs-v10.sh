@@ -17,7 +17,7 @@ echo "Scans the existing folders"
 echo "Be sure you have the highest number for all of them"
 echo
 echo "#############################################################################################"
-echo "Give the pkgversion number like 21.07"
+echo "Give the pkgversion number like 21.10"
 echo "#############################################################################################"
 
 read pkgver
@@ -49,8 +49,10 @@ arcolinux-awesome-git \
 arcolinux-bspwm-git \
 arcolinux-budgie-git \
 arcolinux-cinnamon-git \
+arcolinux-cutefish-git \
 arcolinux-cwm-git \
 arcolinux-deepin-git \
+arcolinux-dusk-git \
 arcolinux-dwm-git \
 arcolinux-dwm-nemesis-git \
 arcolinux-enlightenment-git \
@@ -60,6 +62,7 @@ arcolinux-herbstluftwm-git \
 arcolinux-i3wm-git \
 arcolinux-icewm-git \
 arcolinux-jwm-git \
+arcolinux-leftwm-git \
 arcolinux-lxqt-git \
 arcolinux-mate-git \
 arcolinux-openboxb-git \
@@ -71,6 +74,7 @@ arcolinux-qtile-git \
 arcolinux-spectrwm-git \
 arcolinux-sway-git \
 arcolinux-ukui-git \
+arcolinux-wmderland-git \
 arcolinux-xfce-git \
 arcolinux-xmonad-polybar-git \
 arcolinux-xmonad-xmobar-git \

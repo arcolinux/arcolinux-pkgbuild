@@ -13,6 +13,7 @@ license=('ISC')
 provides=($pkgname)
 conflicts=($pkgname)
 makedepends=('git')
+depends=('inetutils')
 source=("git+https://gitlab.com/jschx/ufetch.git")
 md5sums=('SKIP')
 

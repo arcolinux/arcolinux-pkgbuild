@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-steam
-pkgver=21.07
+pkgver=21.10
 pkgrel=01
 pkgdesc="Installs steam on ArcoLinux"
 arch=('any')
@@ -32,5 +32,6 @@ depends=(
 'lib32-libdbusmenu-glib'
 'lib32-libdbusmenu-gtk2'
 'lib32-nss'
-'ttf-ms-fonts')
+'ttf-ms-fonts'
+'proton-ge-custom-bin')
 

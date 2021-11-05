@@ -2,8 +2,9 @@
 pkgname=arcolinux-bin-git
 _pkgname=arcolinux-bin
 _destname1="/etc/skel/.bin/"
+_destname2="/usr/local/bin/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.08
+pkgver=21.11
 pkgrel=01
 pkgdesc=".bin folder from arcolinux providing fun scripts"
 arch=('any')
@@ -22,4 +23,7 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
 }

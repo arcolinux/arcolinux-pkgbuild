@@ -1,37 +1,25 @@
-# Maintainer: Lex Childs <lexchilds@gmail.com>
-pkgname=leftwm
-pkgver=0.2.5
-pkgrel=1
-epoch=1
-pkgdesc="Leftwm - A tiling window manager for the adventurer"
-arch=('i686' 'x86_64')
-url="https://github.com/leftwm/leftwm"
-license=('MIT')
-depends=()
-makedepends=()
-optdepends=('dmenu: default launcher'
-            'feh: used to set background images'
-            'lemonbar: light weight bar'
-            'polybar: light weight bar')
-source=("${pkgname}::git+https://github.com/leftwm/leftwm.git#tag=${pkgver}")
-md5sums=('SKIP')
-
-build() {
-  cd "$srcdir/$pkgname"
-  cargo build --release
-}
-
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-leftwm-git
+_pkgname=arcolinux-leftwm
+_destname1="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.11
+pkgrel=04
+pkgdesc="Desktop configuration for ArcoLinux -D -B"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-leftwm"
+license=('GPL3')
+makedepends=('git')
+depends=('bash')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mv "target/release/leftwm" "$pkgdir/usr/bin"
-  mv "target/release/leftwm-worker" "$pkgdir/usr/bin"
-  mv "target/release/leftwm-state" "$pkgdir/usr/bin"
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-  mkdir -p "$pkgdir/usr/share/leftwm"
-  cp -R "$srcdir/$pkgname/themes" "$pkgdir/usr/share/leftwm"
-
-  mkdir -p "$pkgdir/usr/share/xsessions"
-  cp "$srcdir/$pkgname/leftwm.desktop" "$pkgdir/usr/share/xsessions"
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }
-

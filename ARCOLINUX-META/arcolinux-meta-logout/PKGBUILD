@@ -12,4 +12,3 @@ depends=(
 	'arcolinux-logout-themes-git'
 	'betterlockscreen-git'
 )
-

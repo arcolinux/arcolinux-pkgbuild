@@ -1,22 +1,11 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinuxd-system-config-dev-git
 _pkgname=arcolinuxd-system-config
-#_destname1="/etc/udev/rules.d"
-_destname2="/etc/modprobe.d"
-#_destname3="/etc/sysctl.d"
-_destname4="/etc/X11/xorg.conf.d"
-#_destname5="/usr/share/applications"
-_destname6="/usr/share/icons/hicolor/"
-_destname7="/usr/local/bin"
-_destname8="/usr/lib/systemd/system"
-_destname9="/etc/samba"
-_destname10="/etc/pacman.d/hooks/"
-_destname11="/usr/lib/"
-_destname12="/usr/share/pixmaps/"
-_destname13="/etc/pacman.d/gnupg/"
+_destname1="/etc"
+_destname2="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.08
-pkgrel=21
+pkgver=21.11
+pkgrel=01
 pkgdesc="Configuration files for ArcoLinuxD"
 arch=('any')
 url="https://github.com/arcolinux/$_pkgname"
@@ -34,42 +23,10 @@ package() {
   install -dm755 "$pkgdir/$_licensedir/$_pkgname"
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
 
-  #install -dm755 "$pkgdir$_destname1"
-  #install -m644 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+  install -dm755 "$pkgdir/$_destname1"
+  cp -r ${srcdir}/${pkgname}/${_destname1} ${pkgdir}
 
   install -dm755 "$pkgdir$_destname2"
-  install -m644 "$srcdir/$pkgname/$_destname2/"* "$pkgdir$_destname2"
+  cp -r ${srcdir}/${pkgname}/${_destname2} ${pkgdir}
 
-  # install -dm755 "$pkgdir$_destname3"
-  # install -m644 "$srcdir/$pkgname/$_destname3/"* "$pkgdir$_destname3"
-
-  install -dm755 "$pkgdir$_destname4"
-  install -m644 "$srcdir/$pkgname/$_destname4/"* "$pkgdir$_destname4"
-
-  #install -dm755 "$pkgdir$_destname5"
-  #install -m644 "$srcdir/$pkgname/$_destname5/"* "$pkgdir$_destname5"
-
-  install -dm755 "$pkgdir$_destname6"
-  cp -r "$srcdir/$pkgname/$_destname6/"* "$pkgdir$_destname6"
-
-  install -dm755 "$pkgdir$_destname7"
-  install -m755 "$srcdir/$pkgname/$_destname7/"* "$pkgdir$_destname7"
-
-  install -dm755 "$pkgdir$_destname8"
-  install -m644 "$srcdir/$pkgname/$_destname8/"* "$pkgdir$_destname8"
-
-  install -dm755 "$pkgdir$_destname9"
-  install -m644 "$srcdir/$pkgname/$_destname9/"* "$pkgdir$_destname9"
-
-  install -dm755 "$pkgdir$_destname10"
-  install -m644 "$srcdir/$pkgname/$_destname10/"* "$pkgdir$_destname10"
-
-  install -dm755 "$pkgdir$_destname11"
-  cp -r "$srcdir/$pkgname/$_destname11/"os-release-arcolinux "$pkgdir$_destname11"
-
-  install -dm755 "$pkgdir$_destname12"
-  install -m644 "$srcdir/$pkgname/$_destname12/"* "$pkgdir$_destname12"
-
-  install -dm755 "$pkgdir$_destname13"
-  install -m644 "$srcdir/$pkgname/$_destname13/"* "$pkgdir$_destname13"
 }

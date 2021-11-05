@@ -1,0 +1,22 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-candy-beauty-dev-git
+_pkgname=arcolinux-candy-beauty-dev
+pkgver=21.10
+pkgrel=02
+_destname="/usr/share/icons/"
+pkgdesc="Beautyline icons completed for ArcoLinux + Candy icons"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}.git"
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+${url}")
+sha256sums=('SKIP')
+package() {
+	install -dm 755 ${pkgdir}${_destname}
+	rm ${srcdir}/${_pkgname}/1-git*
+	rm ${srcdir}/${_pkgname}/setup*
+  	cp -r ${srcdir}/${_pkgname}/* ${pkgdir}${_destname}
+}

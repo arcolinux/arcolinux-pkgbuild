@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-sddm-themes
-pkgver=21.08
-pkgrel=02
+pkgver=21.09
+pkgrel=01
 pkgdesc="arcolinux sddm arcolinux themes"
 arch=('any')
 url="https://github.com/arcolinux/"
@@ -12,6 +12,7 @@ arcolinux-sddm-fralonra-git
 arcolinux-sddm-futuristic-git
 arcolinux-sddm-materia-git
 arcolinux-sddm-redrock-git
+arcolinux-sddm-simplicity-git
 arcolinux-sddm-slice-git
 arcolinux-sddm-sugar-candy-git
 arcolinux-sddm-urbanlifestyle-git
