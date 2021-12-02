@@ -1,17 +1,18 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-pipemenus-git
-_pkgname=arcolinux-pipemenus
-_destname1="/usr/bin/"
-_destname2="/usr/share/applications/"
+pkgname=arcolinux-arc-themes-2021-git
+_pkgname=arcolinux-arc-themes-2021
+_destname1="/usr/share/themes/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=21.11
-pkgrel=01
-pkgdesc="Pipemenu's for arcolinux"
+pkgrel=02
+pkgdesc="Arc themes created for ArcoLinux with Arc Colora script"
 arch=('any')
-url="https://github.com/arcolinux/arcolinux-pipemenus"
+url="https://github.com/arcolinux/arcolinux-arc-themes-2021"
 license=('GPL3')
 makedepends=('git')
-depends=('bash' 'arcolinux-common-git')
+depends=()
+conflicts=("arcolinux-arc-themes-git")
+replaces=('arcolinux-arc-themes-nico-git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
@@ -21,9 +22,5 @@ package() {
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
 	install -dm755 ${pkgdir}${_destname1}
-	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
-	chmod +x ${pkgdir}${_destname1}*
-
-	install -dm755 ${pkgdir}${_destname2}
-	install -m644  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

@@ -5,8 +5,8 @@ _destname="/etc/skel/.xmonad/"
 _destname1="/etc/pacman.d/hooks/"
 _destname2="/etc/skel/.config/gsimplecal/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.10
-pkgrel=20
+pkgver=21.11
+pkgrel=01
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-xmonad-polybar"
@@ -28,7 +28,7 @@ package() {
 	cp -r  ${srcdir}/${_pkgname}${_destname}* ${pkgdir}${_destname}
 
 	install -dm755 ${pkgdir}${_destname1}
-	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}	
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 
 	install -dm755 ${pkgdir}${_destname2}
 	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}

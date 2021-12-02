@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcod-calamares-config-dev-git
-_pkgname=arcod-calamares-config-dev
+pkgname=arcob-calamares-config-dusk-git
+_pkgname=arcob-calamares-config-dusk
 _destname="/etc/calamares"
-_licensedir="/usr/share/arcolinuxd/licenses/"
+_licensedir="/usr/share/arcolinux/licenses/"
 pkgver=21.11
 pkgrel=13
 pkgdesc="calamares for arcolinux"
@@ -11,7 +11,6 @@ url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 depends=()
-conflicts=('arcod-calamares-config-git' 'arcod-calamares-config-git' 'arcod-calamares-config-next-git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")

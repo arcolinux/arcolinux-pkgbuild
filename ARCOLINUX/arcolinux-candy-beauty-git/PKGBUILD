@@ -2,21 +2,24 @@
 pkgname=arcolinux-candy-beauty-git
 _pkgname=arcolinux-candy-beauty
 pkgver=21.11
-pkgrel=01
-_destname="/usr/share/icons/"
+pkgrel=14
+_destname1="/usr/share/icons/"
+_destname2="/usr/share/plasma/"
 pkgdesc="Beautyline icons completed for ArcoLinux + Candy icons"
 arch=('any')
 url="https://github.com/arcolinux/${_pkgname}.git"
 license=('GPL3')
 makedepends=('git')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=('arcolinux-candy-beauty-dev-git')
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+${url}")
 sha256sums=('SKIP')
 package() {
-	install -dm 755 ${pkgdir}${_destname}
+	install -dm 755 ${pkgdir}${_destname1}
+	install -dm 755 ${pkgdir}${_destname2}
 	rm ${srcdir}/${_pkgname}/1-git*
 	rm ${srcdir}/${_pkgname}/setup*
-  	cp -r ${srcdir}/${_pkgname}/* ${pkgdir}${_destname}
+    cp -r ${srcdir}/${_pkgname}/${_destname1}* ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}/${_destname2}* ${pkgdir}${_destname2}
 }

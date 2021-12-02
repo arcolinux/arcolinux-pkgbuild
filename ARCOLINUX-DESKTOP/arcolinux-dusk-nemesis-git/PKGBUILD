@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-dusk-git
-_pkgname=arcolinux-dusk
+pkgname=arcolinux-dusk-nemesis-git
+_pkgname=arcolinux-dusk-nemesis
 _destname1="/etc/skel/.config/"
 _destname2="/usr/share/doc/dwm/"
 _destname3="/usr/share/licenses/dwm/"
@@ -8,11 +8,11 @@ _destname4="/usr/local/bin/"
 _destname5="/usr/share/xsessions/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=21.11
-pkgrel=07
+pkgrel=06
 pkgdesc="Configuration files for ArcoLinux Iso"
 arch=('any')
-conflicts=('arcolinux-dusk-nemesis-git')
-url="https://github.com/arcolinux/arcolinux-dusk"
+conflicts=('arcolinux-dusk-git')
+url="https://github.com/arcolinux/arcolinux-dusk-nemesis"
 license=('GPL3')
 makedepends=('git' 'yajl' 'libx11' 'libxcb' 'libxinerama' 'libxft' 'imlib2')
 depends=('yajl' 'libx11' 'libxcb' 'libxinerama' 'libxft' 'imlib2')

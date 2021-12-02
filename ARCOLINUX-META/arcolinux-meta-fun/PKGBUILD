@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-fun
-pkgver=21.09
+pkgver=21.11
 pkgrel=01
 pkgdesc="Installs fun applications on ArcoLinux"
 arch=('any')
@@ -27,6 +27,7 @@ depends=(
 'inetutils'
 'lolcat'
 'mc'
+'nixieclock'
 'pfetch'
 'python-pywal'
 'ranger'
