@@ -1,0 +1,14 @@
+
+post_install() {
+	systemctl enable arcolinux-graphical-target.service
+	systemctl start arcolinux-graphical-target.service
+}
+
+post_upgrade() {
+	systemctl enable arcolinux-graphical-target.service
+	systemctl start arcolinux-graphical-target.service
+}
+
+pre_remove() {
+	systemctl disable arcolinux-graphical-target.service
+}

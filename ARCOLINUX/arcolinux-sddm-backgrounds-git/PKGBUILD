@@ -2,10 +2,11 @@
 pkgname=arcolinux-sddm-backgrounds-git
 _pkgname=arcolinux-sddm-backgrounds
 _destname1="/usr/share/sddm/"
+_destname2="/usr/share/backgrounds/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.11
-pkgrel=01
-pkgdesc="Backgrounds for SDDM"
+pkgver=21.12
+pkgrel=03
+pkgdesc="Backgrounds for Sddm and Wallpapers"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-sddm-backgrounds"
 license=('GPL3')
@@ -20,4 +21,7 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname2}
 }

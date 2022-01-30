@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -e
 ##################################################################################################################
 # Written to be used on 64 bits computers
 # Author 	: 	Erik Dubois
@@ -17,7 +17,7 @@ echo "Scans the existing folders"
 echo "Be sure you have the highest number for all of them"
 echo
 echo "#############################################################################################"
-echo "Give the pkgversion number like 21.09"
+echo "Give the pkgversion number like 21.12"
 echo "#############################################################################################"
 
 read pkgver
@@ -41,28 +41,23 @@ echo "Continue ?  (y/Y)"
 echo "#############################################################################################"
 read response
 
+# use ls -d */ > list to get the list of the created githubs and copy/paste in
+
+array="
+arcolinux-meta-steam-amd/
+arcolinux-meta-steam-intel/
+arcolinux-meta-steam-nvidia/
+"
+
 if [[ "$response" == [yY] ]]; then
 
 		count=0
 
-		for name in $(ls -d arcolinux-root-git*/); do
+		for name in $array ;
+		do
 			count=$[count+1]
 			cd $name
-			tput setaf 1;echo $name;echo "Github "$count;tput sgr0;
-			sed -i "s/\(^pkgver=\).*/\1$pkgver/" PKGBUILD
-			sed -i "s/\(^pkgrel=\).*/\1$pkgrel/" PKGBUILD
-
-			./build*
-			echo "#############################################################################################"
-			echo "################  "$(basename `pwd`)" done"
-			echo "#############################################################################################"
-			cd ..
-		done
-
-				for name in $(ls -d arcolinux-zsh-git*/); do
-			count=$[count+1]
-			cd $name
-			tput setaf 1;echo $name;echo "Github "$count;tput sgr0;
+			tput setaf 1;echo "Github "$count;tput sgr0;
 			sed -i "s/\(^pkgver=\).*/\1$pkgver/" PKGBUILD
 			sed -i "s/\(^pkgrel=\).*/\1$pkgrel/" PKGBUILD
 
@@ -79,5 +74,5 @@ if [[ "$response" == [yY] ]]; then
 
     else
     	echo "#############################################################################################"
-      echo "Nothing has been changed."
+      echo "Nothing has been changed.";
 fi

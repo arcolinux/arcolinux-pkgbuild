@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-plasma-arc-dark-candy-git
+_pkgname=arcolinux-plasma-arc-dark-candy
+pkgver=21.12
+pkgrel=01
+_destname1="/usr/share/plasma/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgdesc="Combo with arc dark and candy icons"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+conflicts=()
+depends=()
+provides=("${pkgname}")
+depends=("arcolinux-candy-beauty-git" "arcolinux-arc-kde")
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+options=(!strip !emptydirs)
+package() {
+  install -dm 755 ${pkgdir}${_destname1}
+  cp -r ${srcdir}/${_pkgname}/${_destname1}* ${pkgdir}${_destname1}
+}

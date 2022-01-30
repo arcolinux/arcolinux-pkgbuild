@@ -1,10 +1,10 @@
 post_install() {
 
-    tput setaf 1;echo -e "\n** The ArcoLinux Desktop Trasher is installed"
+    echo -e "\n** The ArcoLinux Desktop Trasher is installed"
     echo -e "** Use the ArcoLinux Desktop Trasher with care"
     echo -e "** Make backups before you use it"
     echo -e "** It may compromise other desktops"
-    echo -e "** Use the ArcoLinux Tweak Tool to re-install a compromised desktop**\n";tput sgr0       
+    echo -e "** Use the ArcoLinux Tweak Tool to re-install a compromised desktop**\n"
 }
 
 post_upgrade() {

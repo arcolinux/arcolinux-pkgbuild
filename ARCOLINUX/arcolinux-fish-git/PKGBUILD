@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-fish-git
+_pkgname=arcolinux-fish
+_destname1="/etc/skel/.config/fish/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=22.01
+pkgrel=12
+pkgdesc="fish config from arcolinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-fish"
+license=('GPL3')
+makedepends=('git')
+depends=('bash' 'ttf-meslo-nerd-font-powerlevel10k')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

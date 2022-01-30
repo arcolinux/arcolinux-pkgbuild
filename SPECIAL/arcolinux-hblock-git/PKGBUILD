@@ -6,7 +6,7 @@ _destname_desktop="/usr/share/applications/"
 _destnamesystem="/etc/systemd/system/"
 _destnamelists="/etc/hblock"
 _licensedir="/usr/share/licenses/"
-pkgver=3.2.3
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="An adblocker that creates a hosts file from automatically downloaded blacklists from Héctor Molinero Fernández"
 arch=('any')
@@ -20,7 +20,7 @@ provides=("${pkgname}")
 conflicts=('hblock')
 options=(!strip !emptydirs)
 source=(${_pkgname}::"https://github.com/hectorm/hblock/archive/v${pkgver}.tar.gz" "advert-block.desktop")
-sha256sums=('1b8eb3c5cb074cbe7b0a8b5e040641c12b519bee21a4a879e1bdd328cd17aa60'
+sha256sums=('649ef980871d4be467a43edfa99c636b95b5af38ee976985082a65c4989eac01'
             '93f67de43db23103703c326cd74403c90f52a55b3248d04a51028f8d303f59f6')
 install='readme.install'
 build() {

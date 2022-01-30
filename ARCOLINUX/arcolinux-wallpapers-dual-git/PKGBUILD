@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-wallpapers-dual-git
+_pkgname=arcolinux-wallpapers-dual
+_destname1="/usr/share/backgrounds/arcolinux-dual/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=21.12
+pkgrel=04
+pkgdesc="Wallpapers for arcolinux - dual screen"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-wallpapers-dual"
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+replaces=('arcolinux-wallpapers-lxqt-dual-git')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

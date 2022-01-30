@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-sweet-mars-git
+_pkgname=arcolinux-sweet-mars
+pkgver=21.12
+pkgrel=10
+_destname1="/usr/share/"
+_destname2="/usr/share/plasma/look-and-feel/"
+pkgdesc="Sweet mars themes adapted for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-sweet-mars-git"
+license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
+makedepends=('git')
+depends=("arcolinux-candy-beauty-git")
+source=('arcolinux-sweet-mars::git+https://github.com/arcolinux/arcolinux-sweet-mars')
+sha256sums=('SKIP')
+
+package() {
+  install -dm 755 ${pkgdir}${_destname1}
+  cp -r ${srcdir}/$_pkgname/${_destname1}* ${pkgdir}${_destname1}
+
+  #install -dm 755 ${pkgdir}${_destname2}
+  #cp -r ${srcdir}/Surfn/${_destname2}* ${pkgdir}${_destname2}
+}
