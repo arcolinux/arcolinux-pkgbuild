@@ -1,0 +1,25 @@
+post_install() {
+    echo -e "\n** We change the major icon themes in order to have icons"
+    echo -e "** for our ArcoLinux packages **"
+    echo -e "**     - arc **"
+    echo -e "**     - breeze **"
+    echo -e "**     - faba **"
+    echo -e "**     - flat-remix **"
+    echo -e "**     - numix **"
+    echo -e "**     - paper **"
+    echo -e "**     - papirus **"
+    echo -e "**     - qogir **"
+    echo -e "**     - tela **"
+    echo -e "\n** Be patient ... **"
+    echo -e "** We only change the inherits line **"
+    echo -e "** Surfn icon theme becomes the fallback **"
+    /usr/local/bin/arcolinux-fix-icon-theme-reload
+    echo -e "** ArcoLinux icon theme fixer done **\n"
+}
+
+pre_remove() {
+    echo -e "\n** Changing the icon themes back to their original state.  **"
+    echo -e "** Resetting. Be patient ... **\n"
+    /usr/local/bin/arcolinux-fix-icon-theme-reset
+    echo -e "\n** Icon themes have been reset **\n"
+}

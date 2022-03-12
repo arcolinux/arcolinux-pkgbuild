@@ -1,19 +1,19 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-system-config-git
-_pkgname=arcolinux-system-config
+pkgname=arcolinux-icon-themes-fixer-git
+_pkgname=arcolinux-icon-themes-fixer
 _destname1="/etc"
 _destname2="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=22.03
-pkgrel=02
-pkgdesc="Configuration files for ArcoLinux"
+pkgrel=01
+pkgdesc="Changing icon themes for ArcoLinux"
 arch=('x86_64')
 url="https://github.com/arcolinux/$_pkgname"
 license=('GPL3')
 makedepends=('git')
-depends=()
-conflicts=('arcolinux-system-config-dev-git' 'arcolinuxd-system-config-git' 'arcolinuxd-system-config-dev-git')
-backup=('etc/pacman.d/gnupg/gpg.conf' 'etc/X11/xorg.conf.d/30-touchpad.conf')
+depends=('surfn-icons-git')
+conflicts=()
+backup=()
 provides=("${pkgname}")
 options=( !strip !emptydirs )
 source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
