@@ -1,0 +1,59 @@
+# Maintainer: Héctor Molinero Fernández <hector at molinero dot dev>
+# Contributor: Erazem Kokot <contact at erazem dot eu>
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-hblock-dev-git
+_pkgname=hblock
+_destname="/usr/bin/"
+_destname_desktop="/usr/share/applications/"
+_destname_icons="/usr/share/icons/hicolor/scalable/apps/"
+_destnamesystem="/etc/systemd/system/"
+_destnamelists="/etc/hblock"
+_licensedir="/usr/share/licenses/"
+pkgver=3.4.0
+pkgrel=1
+pkgdesc="An adblocker that creates a hosts file from automatically downloaded blacklists from Héctor Molinero Fernández"
+arch=('any')
+url="https://github.com/hectorm/hblock"
+license=('MIT')
+replaces=('hblock-git')
+backup=('etc/hosts' 'etc/hblock/allow.list' 'etc/hblock/deny.list')
+makedepends=('git')
+depends=('curl')
+provides=("${pkgname}")
+conflicts=('hblock' 'arcolinux-hblock-git')
+options=(!strip !emptydirs)
+source=(${_pkgname}::"https://github.com/hectorm/hblock/archive/v${pkgver}.tar.gz"
+		"advert-block.desktop"
+		"arcolinux-advert-block.svg")
+sha256sums=('762dbe5f2a0ea84078b194190f4fb51b9fe3e6ef043c1899fdda6a083328225f'
+            'f931f66d931969dd426cee762cc292cd5810ab2d715aa8f925fe5a9bce8844a8'
+            '2f011d0563c868c364a6efa1c5c5f2e9ffbfe82a0dc605a0c726d3ad14ca669d')
+install='readme.install'
+build() {
+	cd "$_pkgname-$pkgver"
+	make
+}
+
+package() {
+	install -d -m755 "${pkgdir}${_licensedir}${_pkgname}"
+	install -d -m755 "${pkgdir}${_destname}"
+	install -m644 "${srcdir}/${_pkgname}-${pkgver}/"LICENSE.md "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	install -m755 "${srcdir}/${_pkgname}-${pkgver}/"hblock "${pkgdir}${_destname}hblock"
+	chown root:root ${pkgdir}${_destname}hblock
+	install -d -m755 "${pkgdir}${_destnamesystem}"
+	#install -m644 "${srcdir}/${_pkgname}-${pkgver}/"resources/systemd/hblock.service "${pkgdir}${_destnamesystem}"
+	#install -d -m755 "${pkgdir}"/usr/lib/systemd/system/
+	#install -m644 "${srcdir}/${_pkgname}/"resources/systemd/hblock.timer "${pkgdir}"/usr/lib/systemd/system/hblock.timer
+	#install -d -m755 "${pkgdir}"/etc/systemd/system/timers.target.wants
+	#cd ${pkgdir}/etc/systemd/system/timers.target.wants
+	#ln -s ../$_pkgname.timer ${pkgdir}/etc/systemd/system/timers.target.wants/$_pkgname.timer
+	install -d -m755 "${pkgdir}${_destnamelists}"
+	touch "${pkgdir}${_destnamelists}"/allow.list
+	echo "analytics.google.com" | tee "${pkgdir}${_destnamelists}"/allow.list
+	echo "marketingplatform.google.com" | tee -a "${pkgdir}${_destnamelists}"/allow.list
+	touch "${pkgdir}${_destnamelists}"/deny.list
+	install -d -m755 "${pkgdir}${_destname_desktop}"
+	install -m644 "${srcdir}/advert-block.desktop" "$pkgdir/usr/share/applications/"
+	install -d -m755 "${pkgdir}${_destname_icons}"
+	install -m644 "${srcdir}/arcolinux-advert-block.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+}

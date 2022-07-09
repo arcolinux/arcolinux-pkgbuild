@@ -17,7 +17,7 @@ echo "Scans the existing folders"
 echo "Be sure you have the highest number for all of them"
 echo
 echo "#############################################################################################"
-echo "Give the pkgversion number like 21.10"
+echo "Give the pkgversion number like 22.05"
 echo "#############################################################################################"
 
 read pkgver
@@ -46,6 +46,7 @@ read response
 
 array="
 arcolinux-awesome-git \
+arcolinux-berry-git \
 arcolinux-bspwm-git \
 arcolinux-budgie-git \
 arcolinux-cinnamon-git \
@@ -74,6 +75,7 @@ arcolinux-qtile-git \
 arcolinux-spectrwm-git \
 arcolinux-sway-git \
 arcolinux-ukui-git \
+arcolinux-worm-git \
 arcolinux-wmderland-git \
 arcolinux-xfce-git \
 arcolinux-xmonad-polybar-git \

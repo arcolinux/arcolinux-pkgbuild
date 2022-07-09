@@ -1,0 +1,20 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-btrfs-snapper
+pkgver=22.06
+pkgrel=01
+pkgdesc="Installs btrfs utilities for snapper"
+arch=('any')
+url="https://arcolinux.info"
+license=('MIT' 'GPL3')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+'btrfs-assistant'
+'grub-btrfs'
+'snap-pac'
+'snapper'
+'snapper-gui-git'
+'snapper-support'
+)

@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-candy-beauty-dev-git
 _pkgname=arcolinux-candy-beauty-dev
-pkgver=22.02
+pkgver=22.05
 pkgrel=02
 _destname1="/usr/share/icons/"
 _destname2="/usr/share/plasma/"

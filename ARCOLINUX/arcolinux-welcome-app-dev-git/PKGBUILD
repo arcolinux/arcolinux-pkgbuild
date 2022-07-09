@@ -4,7 +4,7 @@ _pkgname=arcolinux-welcome-app-dev
 _destname1="/etc/skel/.config/"
 _destname2="/usr/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.02
+pkgver=22.07
 pkgrel=01
 pkgdesc="Welcome application for arcolinux"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("${pkgname}")
 conflicts=('arcolinux-welcome-app-git' 'arcolinux-welcome-app-deepin-git' 'arcolinuxd-welcome-app-git')
 install='readme.install'
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+https://github.com/arcolinux/arcolinux-welcome-app-dev")
+source=(${_pkgname}::"git+${url}")
 sha256sums=('SKIP')
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}

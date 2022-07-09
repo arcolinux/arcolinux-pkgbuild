@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-sddm-breeze-minimal-git
+_pkgname=arcolinux-sddm-breeze-minimal
+_themename=arcolinux-breeze-minimal
+_destname1="/usr"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=22.06
+pkgrel=04
+pkgdesc="Breeze adapted for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+depends=('qt5-graphicaleffects' 'qt5-quickcontrols' 'kdeplasma-addons')
+install="$pkgname.install"
+makedepends=('git')
+source=(${_pkgname}::git+$url)
+sha256sums=('SKIP')
+package() {
+  cd "$srcdir/${_pkgname}/usr/share/sddm/themes/$_themename/"
+  install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+  install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+  cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
+}

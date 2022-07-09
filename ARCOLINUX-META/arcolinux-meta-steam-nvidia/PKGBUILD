@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-steam-nvidia
-pkgver=21.12
-pkgrel=04
+pkgver=22.03
+pkgrel=01
 pkgdesc="Installs steam on ArcoLinux for nvidia"
 arch=('any')
 url="https://arcolinux.info"
@@ -11,8 +11,7 @@ conflicts=()
 replaces=('arcolinux-meta-steam')
 options=(!strip !emptydirs)
 install='readme.install'
-depends=(
-'steam'
+optdepends=(
 'lib32-libvdpau'
 'lib32-libva'
 'lib32-nvidia-utils'
@@ -36,4 +35,5 @@ depends=(
 'ttf-ms-fonts'
 'vulkan-tools'
 'proton-ge-custom-bin')
+depends=('steam')
 

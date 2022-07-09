@@ -1,0 +1,17 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-btrfs-timeshift
+pkgver=22.06
+pkgrel=01
+pkgdesc="Installs btrfs utilities for timeshift"
+arch=('any')
+url="https://arcolinux.info"
+license=('MIT' 'GPL3')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=(
+'grub-btrfs'
+'timeshift'
+'timeshift-autosnap'
+)

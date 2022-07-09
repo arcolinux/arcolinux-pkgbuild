@@ -8,7 +8,7 @@ destination4=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_testing/x86_64/"
 destination5=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_xlarge/x86_64/"
 destination6=$HOME"/ARCO/TEST/"
 
-destiny=$destination3
+destiny=$destination1
 
 # 2. makepkg"
 # 1. chroot"
@@ -18,7 +18,7 @@ pwdpath=$(echo $PWD)
 pwd=$(basename "$PWD")
 
 #which packages are always going to be build with makepkg or choice 2
-#makepkglist="arcolinux-dwm-slstatus-git arcolinux-dwm-st-git arcolinux-conky-collection-git arcolinux-conky-collection-plasma-git arco-dwm arcolinux-betterlockscreen arcolinux-lightdm-gtk-greeter arcolinux-lightdm-gtk-greeter-plasma arcolinux-logout-git arcolinux-logout-themes-git arcolinux-qobbar-git arcolinux-teamviewer arcolinux-tweak-tool-dev-git arcolinux-tweak-tool-git arco-dwm"
+#makepkglist=""
 
 for i in $makepkglist
 do

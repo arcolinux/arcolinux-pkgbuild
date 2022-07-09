@@ -2,12 +2,16 @@ post_install() {
 if systemctl --all --type service | grep -q "virtual-machine-check";then
     systemctl disable virtual-machine-check.service
 fi
+sh /usr/local/bin/arcolinux-lsb-release
+sh /usr/local/bin/arcolinux-os-release
 }
 
 post_upgrade() {
 if systemctl --all --type service | grep -q "virtual-machine-check";then
     systemctl disable virtual-machine-check.service
 fi
+sh /usr/local/bin/arcolinux-lsb-release
+sh /usr/local/bin/arcolinux-os-release
 }
 
 pre_remove() {
