@@ -1,0 +1,30 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-on-the-road
+_pkgname=arcolinux-on-the-road
+_destname1="/arco/"
+_destname2="/usr/bin/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=22.07
+pkgrel=16
+pkgdesc="System configuration for Arch Linux based systems - ATT "
+arch=('any')
+url="https://github.com/arcolinux/$pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+source=("${_pkgname}::git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${_destname1}"
+	cp -r "${srcdir}/${_pkgname}/root/"* "${pkgdir}${_destname1}"
+	mkdir -p "${pkgdir}${_destname2}"
+	#cp -r "${srcdir}/skelll"* "${pkgdir}${_destname2}"
+	install -Dm755 ${srcdir}/${_pkgname}/skelll ${pkgdir}${_destname2}
+
+}

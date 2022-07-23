@@ -1,21 +1,21 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-fish-git
-_pkgname=arcolinux-fish
-_destname1="/etc/skel/.config/fish/"
+pkgname=arcolinux-arc-vampire-git
+_pkgname=arcolinux-arc-vampire
+_destname1="/usr/share/themes/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=22.07
-pkgrel=07
-pkgdesc="fish config from arcolinux"
+pkgrel=02
+pkgdesc="Arc themes created for ArcoLinux"
 arch=('any')
-url="https://github.com/arcolinux/arcolinux-fish"
+url="https://github.com/arcolinux/arcolinux-arc-vampire"
 license=('GPL3')
 makedepends=('git')
-depends=('fish' 'lolcat' 'tree' 'bash' 'ttf-meslo-nerd-font-powerlevel10k' 'ufetch-arco-git')
+depends=()
+replaces=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
-install='readme.install'
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}

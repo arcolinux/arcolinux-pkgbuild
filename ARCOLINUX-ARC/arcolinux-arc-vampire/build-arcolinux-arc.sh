@@ -8,7 +8,7 @@ destination4=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_testing/x86_64/"
 destination5=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_xlarge/x86_64/"
 destination6=$HOME"/ARCO/TEST/"
 
-destiny=$destination3
+destiny=$destination1
 
 # 2. makepkg"
 # 1. chroot"
@@ -17,8 +17,8 @@ CHOICE=1
 pwdpath=$(echo $PWD)
 pwd=$(basename "$PWD")
 
-#which packages are always going to build with makepkg or choice 2
-makepkglist=""
+#which packages are always going to be build with makepkg or choice 2
+#makepkglist=""
 
 for i in $makepkglist
 do
@@ -66,6 +66,28 @@ else
   makepkg --sign
 fi
 
+#echo "==>Begin of pwd " $pwd
+#echo "==>Begin of destiny " $destiny
+
+if [ $pwd == "arcolinux-calamares-tool-git" ] ; then
+	destiny=$destination3
+fi
+
+if [ $pwd == "arcolinux-calamares-tool-dev-git" ] ; then
+	destiny=$destination3
+fi
+
+if [ $pwd == "arcolinux-system-installation-git" ] ; then
+	destiny=$destination3
+fi
+
+if [ $pwd == "arcolinux-sddm-backgrounds-git" ] ; then
+  destiny=$destination5
+fi
+
+#echo "<==End of pwd " $pwd
+#echo "<==End of destiny " $destiny
+
 echo "Moving created files to " $destiny
 echo "#############################################################################################"
 mv $search*pkg.tar.zst $destiny
@@ -85,8 +107,17 @@ if [[ -f $wpdpath/*.tar.gz ]]; then
   rm $pwdpath/*.tar.gz
 fi
 
-tput setaf 11
+tput setaf 10
 echo "#############################################################################################"
 echo "###################                       build done                   ######################"
 echo "#############################################################################################"
 tput sgr0
+
+
+if [ $pwd == "arcolinux-sddm-backgrounds-git" ] ; then
+  tput setaf 1
+  echo "#############################################################################################"
+  echo "Also update this repo : "$destination5
+  echo "#############################################################################################"
+  tput sgr0
+fi

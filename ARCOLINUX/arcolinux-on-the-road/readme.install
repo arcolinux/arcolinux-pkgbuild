@@ -1,0 +1,10 @@
+post_install() {
+    echo -e "\n** Meta Package from ArcoLinux **"
+    echo -e "** We are on the road - system configuration **\n"
+}
+
+post_upgrade() {
+    
+    cp etc/lsb-release etc/dev-rel
+    post_install
+}
