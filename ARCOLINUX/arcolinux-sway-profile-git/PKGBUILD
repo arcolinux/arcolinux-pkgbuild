@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-sway-profile-git
+_pkgname=arcolinux-sway-profile
+_destname1="/etc/profile.d/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=22.12
+pkgrel=10
+pkgdesc="Profile for ArcoLinux Sway"
+arch=('any')
+url="https://github.com/arcolinux/"$_pkgname
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir$_destname1"
+  install -m755 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+  #chmod +x ${pkgdir}${_destname1}*
+}

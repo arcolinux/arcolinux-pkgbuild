@@ -1,0 +1,13 @@
+post_install() {
+    cd /etc/skel/.config/arco-chadwm/chadwm
+    echo -e "\n** Making Chadwm **\n"
+    make -B
+    echo -e "\n** Installing Chadwm **\n"
+    make install
+    echo
+    echo -e "\n** The files have been installed in /etc/skel/.config/arco-chadwm **\n"
+}
+
+post_upgrade() {
+    post_install
+}

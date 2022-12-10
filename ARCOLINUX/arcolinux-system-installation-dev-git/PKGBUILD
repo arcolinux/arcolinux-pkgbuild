@@ -1,12 +1,12 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-system-installation-dev-git
 _pkgname=arcolinux-system-installation-dev
-_destname1="/etc/xdg/autostart"
+_destname1="/etc/"
 _destname2="/usr/local/bin/"
 _destname3="/usr/lib/systemd/system/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.06
-pkgrel=01
+pkgver=22.12
+pkgrel=02
 pkgdesc="Installation files for ArcoLinux"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-system-installation"
@@ -23,11 +23,11 @@ package() {
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
 
   install -dm755 "$pkgdir$_destname1"
-  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir/$_destname1"
 
   install -dm755 "$pkgdir$_destname2"
-  cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir$_destname2"
+  cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir/$_destname2"
 
   install -dm755 "$pkgdir$_destname3"
-  cp -r "$srcdir/$pkgname/$_destname3/"* "$pkgdir$_destname3"
+  cp -r "$srcdir/$pkgname/$_destname3/"* "$pkgdir/$_destname3"
 }

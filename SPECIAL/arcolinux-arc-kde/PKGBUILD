@@ -2,7 +2,7 @@
 # Contributor: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 _pkgname=arc-kde
 pkgname=arcolinux-arc-kde
-pkgver=20220706
+pkgver=20220908
 pkgrel=01
 pkgdesc="Arc theme for KDE Plasma 5"
 arch=('any')

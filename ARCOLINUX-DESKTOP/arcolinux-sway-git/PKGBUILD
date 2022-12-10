@@ -1,17 +1,64 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-sway-git
 _pkgname=arcolinux-sway
-_destname1="/etc/skel/.config/sway/"
-_destname2="/etc/skel/"
+_destname1="/etc/skel/.config/"
+_destname5="/usr/share/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.05
-pkgrel=03
+pkgver=22.12
+pkgrel=18
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-sway"
 license=('GPL3')
 makedepends=('git')
-depends=('bash')
+depends=(
+'arcolinux-candy-beauty-git'
+'arcolinux-foot-git'
+'arcolinux-xfce-git'
+'arcolinux-kitty-git'
+'arcolinux-rofi-git'
+'arcolinux-rofi-themes-git'
+'autotiling'
+'azote'
+'bashtop'
+'cava'
+'clipman'
+'dconf-editor'
+'dex'
+'feh'
+'foot'
+'grim'
+'kitty'
+'lf'
+'mako'
+'micro'
+'mpv'
+'nwg-drawer-bin'
+'nwg-bar-bin'
+'pamixer'
+'polkit-gnome'
+'rofi'
+'slurp'
+'sway'
+'swaybg'
+'swayidle'
+'swaylock'
+'swayr'
+'ttf-iosevka-nerd'
+'tty-clock'
+'waybar-hyprland-git'
+'wf-recorder'
+'wl-clipboard'
+'wlogout'
+'wlprop'
+'wlr-randr'
+'wlroots'
+'wofi'
+'xdg-desktop-portal-wlr'
+'xfce4-terminal'
+'xorg-xwayland'
+'wayland'
+)
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
@@ -24,6 +71,6 @@ package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 
-	install -dm755 ${pkgdir}${_destname2}
-	cp -r  ${srcdir}/${_pkgname}${_destname2}.profile ${pkgdir}${_destname2}
+	#install -dm755 ${pkgdir}${_destname5}
+	#cp -r  ${srcdir}/${_pkgname}${_destname5}* ${pkgdir}${_destname5}
 }

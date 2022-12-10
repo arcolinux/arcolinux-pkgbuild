@@ -1,0 +1,26 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-i3wm-db-nemesis-git
+_pkgname=arcolinux-i3wm-db-nemesis
+_destname1="/etc/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=22.10
+pkgrel=12
+pkgdesc="Desktop configuration for ArcoLinux -D -B"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-i3wm-db-nemesis"
+license=('GPL3')
+makedepends=('git')
+conflicts=('axyl-i3wm' 'arcolinux-i3wm-git' 'arcolinux-i3wm-forest-git')
+depends=('bash' 'rofi' 'polybar' 'python-pywal' 'ttf-sourcecodepro-nerd')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

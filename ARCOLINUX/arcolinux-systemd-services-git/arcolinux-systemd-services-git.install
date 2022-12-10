@@ -12,7 +12,7 @@ pre_upgrade() {
 post_install() {
 	echo
 	tput setaf 3;
-	echo "We have updated your pacman-init.service."
+	echo "We have removed your pacman-init.service."
 	tput sgr0;
 	echo
 }

@@ -18,7 +18,7 @@ destination4=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_testing/x86_64/"
 destination5=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_xlarge/x86_64/"
 destination6=$HOME"/ARCO/TEST/"
 
-destiny=$destination1
+destiny=$destination4
 
 # 2. makepkg"
 # 1. chroot"
