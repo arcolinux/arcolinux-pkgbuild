@@ -5,13 +5,14 @@ _destname1="/etc/skel/.config/"
 _destname5="/usr/share/xsessions/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=22.12
-pkgrel=20
+pkgrel=32
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-hyprland"
 license=('GPL3')
 makedepends=('git')
 depends=(
+'archlinux-logout-git'
 'arcolinux-candy-beauty-git'
 'arcolinux-foot-git'
 'arcolinux-xfce-git'
