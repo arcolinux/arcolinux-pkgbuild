@@ -1,6 +1,8 @@
 #!/bin/bash
 #https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot
 
+updpkgsums
+
 destination1=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo/x86_64/"
 destination2=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_3party/x86_64/"
 destination3=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_iso/x86_64/"

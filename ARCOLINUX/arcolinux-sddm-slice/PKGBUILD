@@ -3,7 +3,7 @@ pkgname=arcolinux-sddm-slice-git
 _pkgname=arcolinux-sddm-slice
 _destname1="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.08
+pkgver=23.03
 pkgrel=01
 pkgdesc="Slice SDDM theme adapted for ArcoLinux"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
 depends=('qt5-graphicaleffects')
 optdepends=('ttf-roboto')
-install=$pkgname.install
+install=readme.install
 makedepends=('git')
 options=(!strip !emptydirs)
 replaces=()
@@ -20,6 +20,5 @@ sha256sums=('SKIP')
 package() {
   install -dm755 ${pkgdir}${_licensedir}${_pkgname}
   install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-
   cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
 }

@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-fun
-pkgver=21.11
+pkgver=23.04
 pkgrel=01
 pkgdesc="Installs fun applications on ArcoLinux"
 arch=('any')
@@ -37,6 +37,7 @@ depends=(
 'tty-clock'
 'ufetch-git'
 'ufetch-arco-git'
+'unimatrix-git'
 'wttr'
 )
 

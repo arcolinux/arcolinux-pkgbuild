@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-utilities
-pkgver=21.07
+pkgver=23.03
 pkgrel=01
 pkgdesc="Installs utilities on ArcoLinux"
 arch=('any')
@@ -13,7 +13,7 @@ install='readme.install'
 depends=(
 'bashtop'
 'cpu-x'
-'duf-bin'
+'duf'
 'htop'
 'gtop'
 'gotop-bin'

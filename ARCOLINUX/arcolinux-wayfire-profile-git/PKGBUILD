@@ -3,8 +3,8 @@ pkgname=arcolinux-wayfire-profile-git
 _pkgname=arcolinux-wayfire-profile
 _destname1="/etc/profile.d/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.12
-pkgrel=01
+pkgver=23.01
+pkgrel=03
 pkgdesc="Profile for ArcoLinux wayfire"
 arch=('any')
 url="https://github.com/arcolinux/"$_pkgname
@@ -19,6 +19,5 @@ package() {
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
 
   install -dm755 "$pkgdir$_destname1"
-  install -m755 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
-  #chmod +x ${pkgdir}${_destname1}*
+  install -m644 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
 }

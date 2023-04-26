@@ -5,10 +5,10 @@ _destname1="/etc/skel/.config/"
 #_destname2="/usr/share/doc/dwm/"
 #_destname3="/usr/share/licenses/dwm/"
 #_destname4="/usr/share/man/man1/"
-_destname5="/usr/share/xsessions/"
+_destname5="/usr/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.12
-pkgrel=09
+pkgver=23.04
+pkgrel=03
 pkgdesc="Configuration files for ArcoLinux Iso"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-chadwm"
@@ -18,7 +18,6 @@ depends=('xorg-server'
 			 'xorg-xsetroot'
 			 'feh'
 			 'wget'
-			 'picom'
 			 'rofi'
 			 'arcolinux-rofi-git'
 			 'arcolinux-rofi-themes-git'
@@ -26,12 +25,11 @@ depends=('xorg-server'
 			 'imlib2'
 			 'slock'
 			 'imlib2'
-			 'ttf-material-design-iconic-font'
-			 'ttf-iosevka-nerd'
 			 'eww'
-			 'dash')
-optdepends=()
-conflicts=()
+			 'dash'
+			 'ttf-jetbrains-mono-nerd')
+optdepends=('arcolinux-chadwm-pacman-hook-git')
+conflicts=(arcolinux-chadwm-nemesis-git)
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/arcolinux-${_pkgname}.git")

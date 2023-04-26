@@ -1,0 +1,31 @@
+post_install() {
+  echo
+  tput setaf 2
+  echo "To use this theme, add or change the following lines"
+  echo "in /etc/sddm.conf.d/kde_settings.conf or in the"
+  echo "file /etc/sddm.conf"
+  echo
+  echo "Use the alias 'nsddmk' to quickly change"
+  echo
+  echo "[Theme]"
+  echo "Current=arcolinux-urbanlifestyle"
+  tput sgr0
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  tput setaf 2
+  echo -e "\n** The package has been removed **"
+  echo -e "** Default theme will be arcolinux-simplicity"
+  tput sgr0
+  if grep -q Current= /etc/sddm.conf.d/kde_settings.conf ; then
+      sed -i '/Current=/c Current=arcolinux-simplicity' /etc/sddm.conf.d/kde_settings.conf
+  fi
+  if grep -q Current= /etc/sddm.conf ; then
+      sed -i '/Current=/c Current=arcolinux-simplicity' /etc/sddm.conf
+  fi
+}

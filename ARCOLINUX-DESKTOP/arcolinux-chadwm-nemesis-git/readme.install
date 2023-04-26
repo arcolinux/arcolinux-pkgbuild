@@ -1,0 +1,18 @@
+post_install() {
+    cd /etc/skel/.config/arco-chadwm/chadwm
+    echo -e "\n** Making ArcoLinux Chadwm **\n"
+    make -B
+    echo -e "\n** Installing ArcoLinux Chadwm **\n"
+    make install
+    echo
+    echo -e "\n** The files have been installed in /etc/skel/.config/arco-chadwm **\n"
+    echo
+    echo "Install arcolinux-chadwm-pacman-hook-git to ensure"
+    echo "that you can update and still keep your own config in use"
+    echo "Chadwm like Dwm and Dusk need to be build"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}

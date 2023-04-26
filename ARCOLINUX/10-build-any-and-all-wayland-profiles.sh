@@ -17,7 +17,7 @@ echo "Scans the existing folders"
 echo "Be sure you have the highest number for all of them"
 echo
 echo "#############################################################################################"
-echo "Give the pkgversion number like 22.12"
+echo "Give the pkgversion number like 23.01"
 echo "#############################################################################################"
 
 read pkgver
@@ -27,7 +27,7 @@ echo "You typed " $pkgver
 echo "#############################################################################################"
 echo
 echo "#############################################################################################"
-echo "Give the pkgrelease number like 03"
+echo "Give the pkgrelease number like 01"
 echo "#############################################################################################"
 
 read pkgrel
@@ -87,6 +87,19 @@ if [[ "$response" == [yY] ]]; then
 			cd ..
 		done
 
+		for name in $(ls -d arcolinux-wayfire-profile*/); do
+			count=$[count+1]
+			cd $name
+			tput setaf 1;echo $name;echo "Github "$count;tput sgr0;
+			sed -i "s/\(^pkgver=\).*/\1$pkgver/" PKGBUILD
+			sed -i "s/\(^pkgrel=\).*/\1$pkgrel/" PKGBUILD
+
+			./build*
+			echo "#############################################################################################"
+			echo "################  "$(basename `pwd`)" done"
+			echo "#############################################################################################"
+			cd ..
+		done
 		echo "#############################################################################################"
 		echo "###################                 Script finished                      ####################"
 		echo "#############################################################################################"

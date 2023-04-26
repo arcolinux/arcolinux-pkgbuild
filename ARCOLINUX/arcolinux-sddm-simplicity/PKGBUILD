@@ -3,15 +3,15 @@ pkgname=arcolinux-sddm-simplicity-git
 _pkgname=arcolinux-sddm-simplicity
 _destname1="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.12
-pkgrel=01
+pkgver=23.03
+pkgrel=03
 pkgdesc="Simplicity theme from isseigx on gitlab"
 arch=('any')
 url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
 depends=('qt5-quickcontrols2' 'qt5-quickcontrols')
 makedepends=('git')
-install=$pkgname.install
+install=readme.install
 makedepends=('git')
 options=(!strip !emptydirs)
 replaces=()
@@ -20,6 +20,5 @@ sha256sums=('SKIP')
 package() {
   install -dm755 ${pkgdir}${_licensedir}${_pkgname}
   install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-
   cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
 }

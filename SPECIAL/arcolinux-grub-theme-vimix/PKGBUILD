@@ -1,41 +1,29 @@
-# Maintainer: levinit <levinit@outlook.com>
-# Maintainer: Dct Mei <dctxmei@gmail.com>
-# Editor : Erik Dubois <erik.dubois@gmail.com>
-
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-grub-theme-vimix-git
 _pkgname=arcolinux-grub-theme-vimix
 destinationdir1="/usr/share/grub/themes/Vimix"
 destinationdir2="/boot/grub/themes/Vimix"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=20220707
-pkgrel=01
-pkgdesc="vimix grub theme"
+pkgver=20230305
+pkgrel=03
+pkgdesc="ArcoLinux Vimix grub theme"
 arch=(any)
-url="https://github.com/erikdubois/grub2-themes"
+url="https://github.com/arcolinux/arcolinux-grub-theme-vimix"
 license=('GPL3')
-depends=(grub)
 optdepends=('grub-customizer')
 makedepends=('git')
-install=${pkgname}.install
+depends=()
+install=readme.install
 conflicts=('grub2-theme-vimix-git' 'arcolinux-grub-theme-vimix-dev-git' 'grub-theme-vimix')
-source=("$pkgname::git+${url}")
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::git+${url})
 md5sums=('SKIP')
 package() {
-    #install -d "$pkgdir/${destinationdir1}"
-    install -d $pkgdir/${destinationdir1}/icons
-    #assets folder
-    install -Dm 755 $srcdir/$pkgname/assets/assets-white/icons-1080p/* $pkgdir/$destinationdir1/icons/
-    install -Dm 755 $srcdir/$pkgname/assets/assets-white/select-1080p/* $pkgdir/$destinationdir1/
-    #background folder
-    install -Dm 755 $srcdir/$pkgname/backgrounds/1080p/* $pkgdir/$destinationdir1/
-    #common folder
-    install -Dm 755 $srcdir/$pkgname/common/* $pkgdir/$destinationdir1/
-    #theme
-    install -Dm 755 $srcdir/$pkgname/config/theme-1080p.txt $pkgdir/$destinationdir1/theme.txt
-    #license
-    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
-    install -m644  ${srcdir}/${pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-    #copy to /boot/grub/themes
-    mkdir -p ${pkgdir}/boot/grub/themes
-    cp -r ${pkgdir}/$destinationdir1 ${pkgdir}/$destinationdir2
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	cp -r "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${destinationdir1}"
+	cp -r "${srcdir}/${_pkgname}/${destinationdir1}/"* "${pkgdir}${destinationdir1}"
+	mkdir -p "${pkgdir}${destinationdir2}"
+	cp -r "${srcdir}/${_pkgname}/${destinationdir2}/"* "${pkgdir}${destinationdir2}"
 }

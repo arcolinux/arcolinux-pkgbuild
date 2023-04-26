@@ -1,0 +1,27 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-app-git
+_pkgname=arcolinux-app
+_destname1="/usr/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=23.04
+pkgrel=02
+pkgdesc="ArcoLinux template app"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-app"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+conflicts=("arcolinux-app-dev-git")
+#install='readme.install'
+options=(!strip !emptydirs)
+source=("${url}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+	mkdir -p "${pkgdir}${_destname1}"
+	cp -r "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname1}/"* "${pkgdir}${_destname1}"
+	#mkdir -p "${pkgdir}${_destname2}"
+	#cp -r "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname2}/"* "${pkgdir}${_destname2}"
+}

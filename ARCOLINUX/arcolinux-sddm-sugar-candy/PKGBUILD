@@ -3,14 +3,14 @@ pkgname=arcolinux-sddm-sugar-candy-git
 _pkgname=arcolinux-sddm-sugar-candy
 _destname1="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.06
-pkgrel=02
+pkgver=23.03
+pkgrel=01
 pkgdesc="Sugar Candy SDDM theme adapted for ArcoLinux"
 arch=('any')
 url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
 depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-virtualkeyboard')
-install=$pkgname.install
+install=readme.install
 makedepends=('git')
 options=(!strip !emptydirs)
 replaces=()
@@ -19,6 +19,5 @@ sha256sums=('SKIP')
 package() {
   install -dm755 ${pkgdir}${_licensedir}${_pkgname}
   install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-
   cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
 }

@@ -3,13 +3,13 @@ pkgname=arcolinux-spices-git
 _pkgname=arcolinux-spices
 _destname1="/usr"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=22.12
-pkgrel=04
+pkgver=23.04
+pkgrel=03
 pkgdesc="ArcoLinux tool for Arch Linux based Operating Systems - getting the spices in"
 arch=('x86_64')
 url="https://github.com/arcolinux/${_pkgname}"
 license=('GPL3')
-depends=('python-gobject')
+depends=('python-gobject' 'python-distro')
 makedepends=('git')
 options=(!strip !emptydirs)
 source=("${_pkgname}::git+${url}")
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-
+	sed -i -e s/pkgversion/$pkgver/ $srcdir/${_pkgname}/usr/share/arcolinux-spices/arcolinux-spices.py
+	sed -i -e s/pkgrelease/$pkgrel/ $srcdir/${_pkgname}/usr/share/arcolinux-spices/arcolinux-spices.py
 	cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
 }

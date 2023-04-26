@@ -1,0 +1,31 @@
+post_install() {
+    echo
+    tput setaf 2
+    echo "We will change your grub theme automatically to Vimix"
+    echo "The following file will be changed - /etc/default/grub"
+    tput sgr0
+    echo -e "\n** The theme has been installed in /boot/grub/themes/Vimix **"
+    echo -e "** The theme has ALSO been installed in /usr/share/grub/themes/Vimix as a backup**\n"
+    if [ -f /etc/default/grub ]; then
+        if grep -q GRUB_THEME /etc/default/grub ; then
+            sed -i '/GRUB_THEME/c GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' /etc/default/grub
+        else
+            echo 'GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' | sudo tee -a /etc/default/grub
+        fi
+    fi
+    grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo -e "\n** No grub theme will be applied on next boot **\n"
+    if grep -q GRUB_THEME /etc/default/grub ; then
+        sed -i '/GRUB_THEME/c #GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' /etc/default/grub
+    else
+        echo '#GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' | sudo tee -a /etc/default/grub
+    fi
+    grub-mkconfig -o /boot/grub/grub.cfg  
+}

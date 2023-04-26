@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-sddm-themes
-pkgver=22.06
-pkgrel=02
-pkgdesc="arcolinux sddm arcolinux themes"
+pkgver=23.04
+pkgrel=01
+pkgdesc="ArcoLinux Sddm themes"
 arch=('any')
 url="https://github.com/arcolinux/"
 license=('GPL3')
