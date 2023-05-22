@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-arc-theme
-pkgver=22.07
-pkgrel=01
+pkgver=23.05
+pkgrel=02
 pkgdesc="Installs all ArcoLinux Arc Themes"
 arch=('any')
 url="https://arcolinux.info"
@@ -17,6 +17,7 @@ depends=(
 'arcolinux-arc-azul-git'
 'arcolinux-arc-azure-dodger-blue-git'
 'arcolinux-arc-blood-git'
+'arcolinux-arc-blueberry-git'
 'arcolinux-arc-blue-sky-git'
 'arcolinux-arc-botticelli-git'
 'arcolinux-arc-bright-lilac-git'
@@ -24,13 +25,16 @@ depends=(
 'arcolinux-arc-carnation-git'
 'arcolinux-arc-carolina-blue-git'
 'arcolinux-arc-casablanca-git'
+'arcolinux-arc-cornflower-blue-git'
 'arcolinux-arc-crimson-git'
 'arcolinux-arc-dawn-git'
+'arcolinux-arc-darkish-git'
 'arcolinux-arc-emerald-git'
 'arcolinux-arc-evopop-git'
 'arcolinux-arc-fern-git'
 'arcolinux-arc-fire-git'
 'arcolinux-arc-froly-git'
+'arcolinux-arc-grape-git'
 'arcolinux-arc-havelock-git'
 'arcolinux-arc-hibiscus-git'
 'arcolinux-arc-light-blue-grey-git'
@@ -48,7 +52,9 @@ depends=(
 'arcolinux-arc-pink-git'
 'arcolinux-arc-polo-git'
 'arcolinux-arc-punch-git'
+'arcolinux-arc-purpley-git'
 'arcolinux-arc-red-orange-git'
+'arcolinux-arc-red-violet-git'
 'arcolinux-arc-rusty-orange-git'
 'arcolinux-arc-sky-blue-git'
 'arcolinux-arc-slate-grey-git'
@@ -57,4 +63,5 @@ depends=(
 'arcolinux-arc-tacao-git'
 'arcolinux-arc-tangerine-git'
 'arcolinux-arc-tory-git'
+'arcolinux-arc-twilight-git'
 'arcolinux-arc-warm-pink-git')

@@ -1,0 +1,28 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-app-glade-git
+_pkgname=arcolinux-app-glade
+_destname1="/usr/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=23.05
+pkgrel=40
+pkgdesc="ArcoLinux template app based on Glade"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-app-glade"
+license=('GPL3')
+makedepends=('git')
+depends=('python-distro' 'python-psutil' 'git' 'archiso' 'alacritty')
+provides=("${pkgname}")
+conflicts=("arcolinux-app-glade-dev-git")
+install='readme.install'
+optdepends=('noto-fonts: for alignment of all the buttons and labels (optional)')
+options=(!strip !emptydirs)
+source=("${url}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+	mkdir -p "${pkgdir}${_destname1}"
+	sed -i -e s/pkgversion/$pkgver/ $srcdir/${_pkgname}-${pkgver}-${pkgrel}/usr/share/arcolinux-app-glade/arcolinux_application_glade.py
+	sed -i -e s/pkgrelease/$pkgrel/ $srcdir/${_pkgname}-${pkgver}-${pkgrel}/usr/share/arcolinux-app-glade/arcolinux_application_glade.py
+	cp -r "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_destname1}/"* "${pkgdir}${_destname1}"
+}
