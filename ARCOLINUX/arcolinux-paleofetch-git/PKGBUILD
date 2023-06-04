@@ -2,7 +2,7 @@
 pkgname=arcolinux-paleofetch-git
 _pkgname=arcolinux-paleofetch
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=21.07
+pkgver=23.06
 pkgrel=01
 pkgdesc="Configuration files for ArcoLinux Iso"
 arch=('any')

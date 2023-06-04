@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-logout
-pkgver=23.05
-pkgrel=02
+pkgver=23.06
+pkgrel=01
 pkgdesc="arcolinux logout meta"
 arch=('any')
 url="https://github.com/arcolinux/$pkgname"

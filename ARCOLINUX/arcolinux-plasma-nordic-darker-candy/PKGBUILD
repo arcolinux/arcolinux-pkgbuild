@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-plasma-nordic-darker-candy-git
 _pkgname=arcolinux-plasma-nordic-darker-candy
-pkgver=21.12
-pkgrel=02
+pkgver=23.06
+pkgrel=01
 _destname1="/usr/share/plasma/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgdesc="Combo with Nordic darker and candy icons"

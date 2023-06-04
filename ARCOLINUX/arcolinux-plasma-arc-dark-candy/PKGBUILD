@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-plasma-arc-dark-candy-git
 _pkgname=arcolinux-plasma-arc-dark-candy
-pkgver=21.12
+pkgver=23.06
 pkgrel=01
 _destname1="/usr/share/plasma/"
 _licensedir="/usr/share/arcolinux/licenses/"

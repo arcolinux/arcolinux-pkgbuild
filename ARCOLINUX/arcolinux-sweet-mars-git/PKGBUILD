@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-sweet-mars-git
 _pkgname=arcolinux-sweet-mars
-pkgver=21.12
-pkgrel=10
+pkgver=23.06
+pkgrel=01
 _destname1="/usr/share/"
 _destname2="/usr/share/plasma/look-and-feel/"
 pkgdesc="Sweet mars themes adapted for ArcoLinux"
