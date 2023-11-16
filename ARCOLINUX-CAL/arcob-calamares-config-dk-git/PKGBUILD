@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcob-calamares-config-lxqt-git
-_pkgname=arcob-calamares-config-lxqt
+pkgname=arcob-calamares-config-dk-git
+_pkgname=arcob-calamares-config-dk
 _destname="/etc/calamares"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=23.11

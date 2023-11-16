@@ -12,7 +12,7 @@ url="https://github.com/arcolinux/arcolinux-wayfire"
 license=('GPL3')
 makedepends=('git')
 depends=(
-'arcolinux-candy-beauty-git'
+'a-candy-beauty-icon-theme-git'
 'arcolinux-foot-git'
 'arcolinux-xfce-git'
 'arcolinux-kitty-git'

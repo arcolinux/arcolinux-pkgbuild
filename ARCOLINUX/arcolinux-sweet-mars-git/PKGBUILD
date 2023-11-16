@@ -2,7 +2,7 @@
 pkgname=arcolinux-sweet-mars-git
 _pkgname=arcolinux-sweet-mars
 pkgver=23.06
-pkgrel=01
+pkgrel=03
 _destname1="/usr/share/"
 _destname2="/usr/share/plasma/look-and-feel/"
 pkgdesc="Sweet mars themes adapted for ArcoLinux"
@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/arcolinux/arcolinux-sweet-mars-git"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-depends=("arcolinux-candy-beauty-git")
+depends=("a-candy-beauty-icon-theme-git")
 source=('arcolinux-sweet-mars::git+https://github.com/arcolinux/arcolinux-sweet-mars')
 sha256sums=('SKIP')
 

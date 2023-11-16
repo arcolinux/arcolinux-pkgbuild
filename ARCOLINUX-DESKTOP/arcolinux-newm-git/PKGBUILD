@@ -12,7 +12,7 @@ url="https://github.com/arcolinux/arcolinux-newm"
 license=('GPL3')
 makedepends=('git')
 depends=(
-'arcolinux-candy-beauty-git'
+'a-candy-beauty-icon-theme-git'
 'arcolinux-foot-git'
 'arcolinux-nwg-drawer-git'
 'arcolinux-xfce-git'

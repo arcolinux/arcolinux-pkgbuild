@@ -2,7 +2,7 @@
 pkgname=arcolinux-plasma-nordic-darker-candy-git
 _pkgname=arcolinux-plasma-nordic-darker-candy
 pkgver=23.06
-pkgrel=01
+pkgrel=03
 _destname1="/usr/share/plasma/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgdesc="Combo with Nordic darker and candy icons"
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=()
 depends=()
 provides=("${pkgname}")
-depends=("arcolinux-candy-beauty-git" "nordic-kde-git")
+depends=("a-candy-beauty-icon-theme-git" "nordic-kde-git")
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
 options=(!strip !emptydirs)

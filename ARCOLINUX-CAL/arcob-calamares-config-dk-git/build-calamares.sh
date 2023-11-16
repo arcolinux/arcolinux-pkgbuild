@@ -11,7 +11,7 @@ destination4=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_testing/x86_64/"
 destination5=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_xlarge/x86_64/"
 destination6=$HOME"/ARCO/TEST/"
 
-destiny=$destination1
+destiny=$destination3
 
 # 2. makepkg"
 # 1. chroot"
@@ -69,7 +69,6 @@ else
   makepkg --sign
 fi
 
-
 echo "Moving created files to " $destiny
 echo "#############################################################################################"
 mv -n $search*pkg.tar.zst $destiny
@@ -89,7 +88,7 @@ if [[ -f $wpdpath/*.tar.gz ]]; then
   rm $pwdpath/*.tar.gz
 fi
 
-tput setaf 10
+tput setaf 11
 echo "#############################################################################################"
 echo "###################                       build done                   ######################"
 echo "#############################################################################################"
