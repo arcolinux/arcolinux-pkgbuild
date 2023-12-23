@@ -1,11 +1,15 @@
 post_install() {
-if systemctl --all --type service | grep -q "virtual-machine-check";then
+if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
     systemctl disable virtual-machine-check.service
 fi
 sh /usr/local/bin/arcolinux-lsb-release
 sh /usr/local/bin/arcolinux-os-release
 if [ ! -d /sys/firmware/efi/efivars/ ]; then 
     rm /etc/pacman.d/hooks/grub-install.hook
+fi
+
+if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
+    rm /etc/pacman.d/hooks/kernel-linux.hook
 fi
 }
 
@@ -17,6 +21,9 @@ sh /usr/local/bin/arcolinux-lsb-release
 sh /usr/local/bin/arcolinux-os-release
 if [ ! -d /sys/firmware/efi/efivars/ ]; then 
     rm /etc/pacman.d/hooks/grub-install.hook
+fi
+if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
+    rm /etc/pacman.d/hooks/kernel-linux.hook
 fi
 }
 
