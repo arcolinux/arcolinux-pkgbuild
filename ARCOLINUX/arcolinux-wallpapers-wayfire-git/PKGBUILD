@@ -1,0 +1,23 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-wallpapers-wayfire-git
+_pkgname=arcolinux-wallpapers-wayfire
+_destname1="/usr/share/backgrounds/arcolinux-wayfire/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=23.12
+pkgrel=01
+pkgdesc="Wallpapers for ArcoLinux wayfire"
+arch=('any')
+url="https://github.com/arcolinux/${pkgname}"
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

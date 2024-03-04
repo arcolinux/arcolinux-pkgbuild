@@ -2,58 +2,19 @@
 pkgname=arcolinux-river-git
 _pkgname=arcolinux-river
 _destname1="/etc/skel/.config/"
+_destname2="/etc/skel/.bin/"
+_destname3="/etc/pacman.d/hooks/"
+_destname4="/usr/bin/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.06
-pkgrel=01
+pkgver=24.02
+pkgrel=04
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
-url="https://github.com/arcolinux/arcolinux-hyprland"
+url="https://github.com/arcolinux/arcolinux-river"
 license=('GPL3')
 makedepends=('git')
-depends=(
-'a-candy-beauty-icon-theme-git'
-'arcolinux-foot-git'
-'arcolinux-xfce-git'
-'arcolinux-kitty-git'
-'arcolinux-rofi-git'
-'arcolinux-rofi-themes-git'
-'autotiling'
-'azote'
-'bashtop'
-'cava'
-'clipman'
-'dconf-editor'
-'dex'
-'feh'
-'foot'
-'grim'
-'kitty'
-'lf'
-'mako'
-'micro'
-'mpv'
-'pamixer'
-'polkit-gnome'
-'river'
-'rofi'
-'slurp'
-'swaybg'
-'swayidle'
-'swaylock'
-'ttf-iosevka-nerd'
-'tty-clock'
-'waybar-hyprland-git'
-'wf-recorder'
-'wl-clipboard'
-'wlogout'
-'wlr-randr'
-'wlroots'
-'wofi'
-'xdg-desktop-portal-wlr'
-'xfce4-terminal'
-'xorg-xwayland'
-'wayland'
-)
+depends=()
+conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
@@ -65,4 +26,13 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+
+	install -dm755 ${pkgdir}${_destname4}
+	cp -r  ${srcdir}/${_pkgname}${_destname4}* ${pkgdir}${_destname4}
 }

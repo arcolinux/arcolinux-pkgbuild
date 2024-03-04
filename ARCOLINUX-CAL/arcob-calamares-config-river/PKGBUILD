@@ -1,10 +1,10 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcob-calamares-config-everyway-git
-_pkgname=arcob-calamares-config-everyway
+pkgname=arcob-calamares-config-river-git
+_pkgname=arcob-calamares-config-river
 _destname="/etc/calamares"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.12
-pkgrel=31
+pkgver=24.02
+pkgrel=10
 pkgdesc="calamares for arcolinux"
 arch=('any')
 url="https://github.com/arcolinux/${_pkgname}"

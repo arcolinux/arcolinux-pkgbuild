@@ -3,18 +3,18 @@ pkgname=arcolinux-hyprland-git
 _pkgname=arcolinux-hyprland
 _destname1="/etc/skel/.config/"
 _destname2="/etc/skel/.bin/"
+_destname3="/etc/pacman.d/hooks/"
+_destname4="/usr/bin/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.12
-pkgrel=01
+pkgver=24.01
+pkgrel=54
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-hyprland"
 license=('GPL3')
 makedepends=('git')
-depends=(
-'arcolinux-hyprland-profile-git'
-'arcolinux-wayland-profile-git'
-)
+depends=()
+conflicts=("arcolinux-hyprland-nemesis-git")
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
@@ -29,4 +29,10 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname2}
 	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+
+	install -dm755 ${pkgdir}${_destname4}
+	cp -r  ${srcdir}/${_pkgname}${_destname4}* ${pkgdir}${_destname4}
 }

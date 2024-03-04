@@ -1,0 +1,33 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-powermenu-git
+_pkgname=arcolinux-powermenu
+_destname1="/etc/skel/.config/powermenu/"
+_destname2="/etc/skel/.bin/"
+_destname3="/usr/local/bin/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.02
+pkgrel=01
+pkgdesc="powermenu config for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-powermenu"
+license=('GPL3')
+makedepends=('git')
+depends=('inetutils' 'bash' 'python' 'i3lock-fancy-dualmonitors-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+}

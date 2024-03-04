@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-arc-theme
-pkgver=23.06
-pkgrel=01
+pkgver=24.02
+pkgrel=02
 pkgdesc="Installs all ArcoLinux Arc Themes"
 arch=('any')
 url="https://arcolinux.info"
@@ -15,13 +15,13 @@ depends=(
 'arcolinux-arc-archlinux-blue-git'
 'arcolinux-arc-arcolinux-blue-git'
 'arcolinux-arc-azul-git'
+'arcolinux-arc-azure-git'
 'arcolinux-arc-azure-dodger-blue-git'
 'arcolinux-arc-blood-git'
 'arcolinux-arc-blueberry-git'
 'arcolinux-arc-blue-sky-git'
 'arcolinux-arc-botticelli-git'
 'arcolinux-arc-bright-lilac-git'
-'arcolinux-arc-bright-lime-green-git'
 'arcolinux-arc-carnation-git'
 'arcolinux-arc-carolina-blue-git'
 'arcolinux-arc-casablanca-git'
@@ -29,12 +29,12 @@ depends=(
 'arcolinux-arc-crimson-git'
 'arcolinux-arc-dawn-git'
 'arcolinux-arc-darkish-git'
+'arcolinux-arc-dodger-blue-git'
 'arcolinux-arc-emerald-git'
 'arcolinux-arc-evopop-git'
 'arcolinux-arc-fern-git'
 'arcolinux-arc-fire-git'
 'arcolinux-arc-froly-git'
-'arcolinux-arc-grape-git'
 'arcolinux-arc-havelock-git'
 'arcolinux-arc-hibiscus-git'
 'arcolinux-arc-light-blue-grey-git'
@@ -64,4 +64,5 @@ depends=(
 'arcolinux-arc-tangerine-git'
 'arcolinux-arc-tory-git'
 'arcolinux-arc-twilight-git'
+'arcolinux-arc-vampire-git'
 'arcolinux-arc-warm-pink-git')

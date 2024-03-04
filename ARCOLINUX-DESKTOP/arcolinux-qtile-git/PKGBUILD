@@ -2,9 +2,10 @@
 pkgname=arcolinux-qtile-git
 _pkgname=arcolinux-qtile
 _destname1="/etc/skel/.config/qtile/"
+_destname2="/etc/skel/.bin/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.11
-pkgrel=01
+pkgver=24.02
+pkgrel=20
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-qtile"
@@ -16,11 +17,14 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
 install='readme.install'
-conflicts=('arcolinux-qtile-dots-git')
+conflicts=('arcolinux-qtile-dots-git' 'arcolinux-qtile-distrotube-git')
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
 }

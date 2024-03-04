@@ -1,13 +1,13 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-arc-grape-git
-_pkgname=arcolinux-arc-grape
+pkgname=arcolinux-arc-azure-git
+_pkgname=arcolinux-arc-azure
 _destname1="/usr/share/themes/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.06
+pkgver=24.02
 pkgrel=01
 pkgdesc="Arc themes created for ArcoLinux"
 arch=('any')
-url="https://github.com/arcolinux/arcolinux-arc-grape"
+url="https://github.com/arcolinux/arcolinux-arc-azure"
 license=('GPL3')
 makedepends=('git')
 depends=()

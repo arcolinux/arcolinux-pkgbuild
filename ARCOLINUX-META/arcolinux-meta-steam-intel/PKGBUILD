@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-meta-steam-intel
-pkgver=23.06
-pkgrel=01
+pkgver=24.02
+pkgrel=02
 pkgdesc="Installs steam on ArcoLinux for intel"
 arch=('any')
 url="https://arcolinux.info"
@@ -11,25 +11,13 @@ conflicts=()
 options=(!strip !emptydirs)
 install='readme.install'
 optdepends=(
-'lib32-libva'
-'lib32-libxtst'
-'lib32-libxrandr'
-'lib32-libpulse'
-'lib32-gdk-pixbuf2'
-'lib32-gtk2'
-'lib32-openal'
-'lib32-mesa'
-'lib32-gcc-libs'
-'lib32-libx11'
-'lib32-libxss'
-'lib32-alsa-plugins'
 'lsof'
-'lib32-libgpg-error'
-'lib32-libindicator-gtk2'
-'lib32-libdbusmenu-glib'
-'lib32-libdbusmenu-gtk2'
-'lib32-nss'
+'proton-ge-custom-bin'
+'protonup-qt'
+'gamemode'
+'lib32-gamemode'
+)
+depends=(
+'steam'
 'ttf-ms-fonts'
-'vulkan-tools'
-'proton-ge-custom-bin')
-depends=('steam')
+)

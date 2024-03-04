@@ -1,5 +1,6 @@
 post_install() {
-    echo -e "\n** The files have been installed in /etc/skel/.config/hypr **\n"
+    echo -e "\n** The files have been installed in /etc/skel/.config/river **\n"
+    /usr/bin/sed -i -e 's/Exec=.*/Exec=run-river/g' /usr/share/wayland-sessions/river.desktop
 }
 
 post_upgrade() {

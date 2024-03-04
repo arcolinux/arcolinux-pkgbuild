@@ -9,7 +9,7 @@ _destname_icons="/usr/share/icons/hicolor/scalable/apps/"
 _destnamesystem="/etc/systemd/system/"
 _destnamelists="/etc/hblock"
 _licensedir="/usr/share/licenses/"
-pkgver=3.4.2
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="An adblocker that creates a hosts file from automatically downloaded blacklists from Héctor Molinero Fernández"
 arch=('any')
@@ -25,7 +25,7 @@ options=(!strip !emptydirs)
 source=("https://github.com/hectorm/hblock/archive/v${pkgver}.tar.gz"
 		"advert-block.desktop"
 		"arcolinux-advert-block.svg")
-sha256sums=('4b5ff1ddf543d46610ccfa510689f2c11b32eb7561bf76815da853e6f0dd6bcd'
+sha256sums=('d578e81a4ec1a4ebd3308e9c53591a7496403b016420ad47e7600660e3fd06cd'
             'f931f66d931969dd426cee762cc292cd5810ab2d715aa8f925fe5a9bce8844a8'
             '2f011d0563c868c364a6efa1c5c5f2e9ffbfe82a0dc605a0c726d3ad14ca669d')
 install='readme.install'
