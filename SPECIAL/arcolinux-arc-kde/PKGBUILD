@@ -2,9 +2,9 @@
 # Contributor: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 _pkgname=arc-kde
 pkgname=arcolinux-arc-kde
-pkgver=20220908
-pkgrel=01
-pkgdesc="Arc theme for KDE Plasma 5"
+pkgver=20240317
+pkgrel=02
+pkgdesc="Arc theme for KDE Plasma 5/6"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/arc-kde"
 license=('GPL3')
@@ -20,8 +20,8 @@ optdepends=(
 )
 provides=("$_pkgname" 'kvantum-theme-arc')
 conflicts=("$_pkgname" 'kvantum-theme-arc' 'arc-dark-git' 'arcolinux-kvantum-theme-arc-git')
-replaces=("arcolinux-kvantum-theme-arc-git")
 options=('!strip')
+#replaces=("arcolinux-kvantum-theme-arc-git")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
@@ -37,6 +37,10 @@ prepare() {
 package() {
 	# shellcheck disable=SC2154
     rm -r "${srcdir}/${_pkgname}"/plasma/desktoptheme/Arc-Color/icons
+	# remove splashs
+	rm -r "${srcdir}/${_pkgname}"/plasma/look-and-feel/com.github.varlesh.arc/contents/splash/
+	rm -r "${srcdir}/${_pkgname}"/plasma/look-and-feel/com.github.varlesh.arc-dark/contents/splash/
+	rm -r "${srcdir}/${_pkgname}"/plasma/look-and-feel/com.github.varlesh.arc-darker/contents/splash/
     #rm -r "${pkgdir}"/usr/share/plasma/desktoptheme/Arc-Color/dialogs
     rm -r "${srcdir}/${_pkgname}"/plasma/desktoptheme/Arc-Dark/icons
     #rm -r "${pkgdir}"/usr/share/plasma/desktoptheme/Arc-Dark/dialogs

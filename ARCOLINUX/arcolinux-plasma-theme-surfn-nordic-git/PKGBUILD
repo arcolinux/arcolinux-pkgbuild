@@ -1,25 +1,24 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-mirrorlist-spinoff-git
-_pkgname=arcolinux-mirrorlist-spinoff
-_destname1="/etc/pacman.d/"
+pkgname=arcolinux-plasma-theme-surfn-nordic-git
+_pkgname=arcolinux-plasma-theme-surfn-nordic
+_destname1="/usr/share/plasma/look-and-feel/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.06
-pkgrel=01
-pkgdesc="ArcoLinux mirrorlist for use by pacman for spinoffs"
+pkgver=24.03
+pkgrel=10
+pkgdesc="Plasma theme for ArcoLinux"
 arch=('any')
-url="https://github.com/arcolinux/arcolinux-mirrorlist-spinoff"
+url="https://github.com/arcolinux/arcolinux-plasma-theme-surfn-nordic"
 license=('GPL3')
 makedepends=('git')
-depends=()
+depends=('nordic-kde-git' 'surfn-plasma-dark-icons-git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
-backup=(etc/pacman.d/arcolinux-mirrorlist)
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-	#install -dm755 ${pkgdir}${_destname1}
-	#install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

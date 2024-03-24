@@ -1,25 +1,26 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=arcolinux-plasma-kservices-git
-_pkgname=arcolinux-plasma-kservices
-_destname="/etc"
+pkgname=arcolinux-mirrorlist-nemesis-git
+_pkgname=arcolinux-mirrorlist-nemesis
+_destname1="/etc/pacman.d/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.06
-pkgrel=01
-pkgdesc="Kservice files for ArcoLinuxB Plasma"
+pkgver=24.03
+pkgrel=12
+pkgdesc="ArcoLinux mirrorlist"
 arch=('any')
-url="https://github.com/arcolinux/${_pkgname}"
+url="https://github.com/arcolinux/arcolinux-mirrorlist-nemesis"
 license=('GPL3')
 makedepends=('git')
-conflicts=()
+conflicts=('arcolinux-mirrorlist-git')
 depends=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
-install='readme.install'
+#backup=(etc/pacman.d/arcolinux-mirrorlist)
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-	cp -r  ${srcdir}/${_pkgname}${_destname} ${pkgdir}${_destname}
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

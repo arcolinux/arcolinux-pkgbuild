@@ -1,14 +1,14 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=arcolinux-chadwm-nemesis-git
-_pkgname=chadwm
+_pkgname=chadwm-nemesis
 _destname1="/etc/skel/.config/"
-#_destname2="/usr/share/doc/dwm/"
+_destname2="/etc/skel/.bin/"
 #_destname3="/usr/share/licenses/dwm/"
 #_destname4="/usr/share/man/man1/"
 _destname5="/usr/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.01
-pkgrel=04
+pkgver=24.03
+pkgrel=06
 pkgdesc="Configuration files for ArcoLinux Iso"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-chadwm-nemesis"
@@ -32,7 +32,7 @@ optdepends=('arcolinux-chadwm-pacman-hook-git')
 conflicts=(arcolinux-chadwm-git)
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+https://github.com/arcolinux/arcolinux-${_pkgname}-nemesis.git")
+source=(${_pkgname}::"git+https://github.com/arcolinux/arcolinux-${_pkgname}.git")
 sha256sums=('SKIP')
 install='readme.install'
 
@@ -52,8 +52,8 @@ package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 
-	#install -dm755 ${pkgdir}${_destname2}
-	#cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
 
 	#install -dm755 ${pkgdir}${_destname3}
 	#cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}

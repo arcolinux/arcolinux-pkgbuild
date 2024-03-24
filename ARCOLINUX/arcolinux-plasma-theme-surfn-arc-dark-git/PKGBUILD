@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-plasma-theme-surfn-arc-dark-git
+_pkgname=arcolinux-plasma-theme-surfn-arc-dark
+_destname1="/usr/share/plasma/look-and-feel/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.03
+pkgrel=10
+pkgdesc="Plasma theme for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-plasma-theme-surfn-arc-dark"
+license=('GPL3')
+makedepends=('git')
+depends=('arcolinux-arc-kde' 'surfn-plasma-dark-icons-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-plasma-keybindings-git
+_pkgname=arcolinux-plasma-keybindings
+_destname="/etc"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.03
+pkgrel=03
+pkgdesc="Kservice files for ArcoLinuxB Plasma"
+arch=('any')
+url="https://github.com/arcolinux/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+conflicts=()
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	cp -r  ${srcdir}/${_pkgname}${_destname} ${pkgdir}${_destname}
+}

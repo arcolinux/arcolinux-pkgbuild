@@ -1,0 +1,21 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-meta-plasma-design
+pkgver=24.03
+pkgrel=01
+pkgdesc="Installs ArcoLinux Plasma packages"
+arch=('any')
+url="https://arcolinux.info"
+license=('GPL')
+provides=("${pkgname}")
+conflicts=()
+options=(!strip !emptydirs)
+install='readme.install'
+depends=("arcolinux-plasma-keybindings-git"
+"arcolinux-plasma-servicemenus-git"
+"arcolinux-plasma-theme-candy-beauty-arc-dark-git"
+"arcolinux-plasma-theme-candy-beauty-nordic-git"
+"arcolinux-plasma-theme-surfn-arc-dark-git"
+"arcolinux-plasma-theme-surfn-nordic-git"
+)
+
+

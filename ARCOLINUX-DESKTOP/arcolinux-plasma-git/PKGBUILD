@@ -5,8 +5,8 @@ _destname1="/etc/skel/.config/"
 _destname2="/etc/skel/.local/share/"
 _destname3="/etc/xdg/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.02
-pkgrel=03
+pkgver=24.03
+pkgrel=01
 pkgdesc="ArcoLinuxB Plasma Desktop Settings"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-plasma"
@@ -23,12 +23,12 @@ package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-	install -dm755 ${pkgdir}${_destname1}
-	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	#install -dm755 ${pkgdir}${_destname1}
+	#cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 
-	install -dm755 ${pkgdir}${_destname2}
-	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+	#install -dm755 ${pkgdir}${_destname2}
+	#cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
 
-	install -dm755 ${pkgdir}${_destname3}
-	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}	
+	#install -dm755 ${pkgdir}${_destname3}
+	#cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}	
 }
