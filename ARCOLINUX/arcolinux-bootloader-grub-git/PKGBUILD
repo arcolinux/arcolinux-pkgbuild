@@ -1,0 +1,27 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-bootloader-grub-git
+_pkgname=arcolinux-bootloader-grub
+_destname1="/etc/pacman.d/hooks"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.04
+pkgrel=01
+pkgdesc="Configuration files for ArcoLinux"
+arch=('x86_64')
+url="https://github.com/arcolinux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('arcolinux-bootloader-systemd-boot-git' 'arcolinux-bootloader-refind-git')
+backup=()
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/arcolinux/${_pkgname}")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir/$_destname1"
+  cp -r ${srcdir}/${pkgname}/${_destname1}/* ${pkgdir}/${_destname1}
+}

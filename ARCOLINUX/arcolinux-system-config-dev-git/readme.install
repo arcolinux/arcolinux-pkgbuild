@@ -1,30 +1,150 @@
 post_install() {
-if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
-    systemctl disable virtual-machine-check.service
+tput setaf 3;
+echo
+echo "WARNING:"
+echo
+echo "If you are on Grub then install the following package"
+echo "sudo pacman -S arcolinux-bootloader-grub-git"
+echo
+echo "If you are on Systemd-boot then install the following package"
+echo "sudo pacman -S arcolinux-bootloader-systemd-boot-git"
+echo
+echo "WARNING:"
+echo
+tput setaf 2;
+bootloader=$(sudo bootctl status | grep "Product" | awk '{print $2}')
+if [ "$bootloader" = "systemd-boot" ]; then
+    echo "The bootloader is systemd-boot."
+    echo "Install this package for your safety"
+    echo
+    echo "sudo pacman -S arcolinux-bootloader-systemd-boot-git"
+    echo
+    echo "It contains all the pacman hooks it needs."
+    echo
+elif [ "$bootloader" = "GRUB" ]; then
+    echo "The bootloader is GRUB."
+    echo "Install the package for your safety"
+    echo
+    echo "sudo pacman -S arcolinux-bootloader-grub-git"
+    echo
+    echo "It contains all the pacman hooks it needs."
+    echo
 fi
-sh /usr/local/bin/arcolinux-lsb-release
-sh /usr/local/bin/arcolinux-os-release
-if [ ! -d /sys/firmware/efi/efivars/ ]; then 
-    rm /etc/pacman.d/hooks/grub-install.hook
-fi
+tput sgr0
 
-if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
-    rm /etc/pacman.d/hooks/kernel-linux.hook
-fi
+#function to check if a package is installed
+is_package_installed() {
+    if pacman -Q "$1" &> /dev/null; then
+        return 0  # Success
+    else
+        return 1  # Failure
+    fi
 }
 
-post_upgrade() {
+tput setaf 6;
+if is_package_installed arcolinux-bootloader-grub-git; then
+    echo
+    echo "Congrats the package is installed - you are safe"
+    echo
+fi
+tput sgr0
+
+tput setaf 6;
+if is_package_installed arcolinux-bootloader-systemd-boot-git; then
+    echo
+    echo "Congrats the package is installed - you are safe"
+    echo
+fi
+tput sgr0
+
+tput setaf 1;
+if ! is_package_installed arcolinux-bootloader-systemd-boot-git && ! is_package_installed arcolinux-bootloader-grub-git; then
+    echo
+    echo "YOU ARE NOT SAFE YET - INSTALL THE CORRECT PACKAGE"
+    echo
+fi
+tput sgr0
+
 if systemctl --all --type service | grep -q "virtual-machine-check";then
     systemctl disable virtual-machine-check.service
 fi
 sh /usr/local/bin/arcolinux-lsb-release
 sh /usr/local/bin/arcolinux-os-release
-if [ ! -d /sys/firmware/efi/efivars/ ]; then 
-    rm /etc/pacman.d/hooks/grub-install.hook
+}
+
+
+post_upgrade() {
+tput setaf 3;
+echo
+echo "WARNING:"
+echo
+echo "If you are on Grub then install the following package"
+echo "sudo pacman -S arcolinux-bootloader-grub-git"
+echo
+echo "If you are on Systemd-boot then install the following package"
+echo "sudo pacman -S arcolinux-bootloader-systemd-boot-git"
+echo
+echo "WARNING:"
+echo
+tput setaf 2;
+bootloader=$(sudo bootctl status | grep "Product" | awk '{print $2}')
+if [ "$bootloader" = "systemd-boot" ]; then
+    echo "The bootloader is systemd-boot."
+    echo "Install this package for your safety"
+    echo
+    echo "sudo pacman -S arcolinux-bootloader-systemd-boot-git"
+    echo
+    echo "It contains all the pacman hooks it needs."
+    echo
+elif [ "$bootloader" = "GRUB" ]; then
+    echo "The bootloader is GRUB."
+    echo "Install the package for your safety"
+    echo
+    echo "sudo pacman -S arcolinux-bootloader-grub-git"
+    echo
+    echo "It contains all the pacman hooks it needs."
+    echo
 fi
-if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
-    rm /etc/pacman.d/hooks/kernel-linux.hook
+tput sgr0
+
+#function to check if a package is installed
+is_package_installed() {
+    if pacman -Q "$1" &> /dev/null; then
+        return 0  # Success
+    else
+        return 1  # Failure
+    fi
+}
+
+tput setaf 6;
+if is_package_installed arcolinux-bootloader-grub-git; then
+    echo
+    echo "Congrats the package is installed - you are safe"
+    echo
 fi
+tput sgr0
+
+tput setaf 6;
+if is_package_installed arcolinux-bootloader-systemd-boot-git; then
+    echo
+    echo "Congrats the package is installed - you are safe"
+    echo
+fi
+tput sgr0
+
+tput setaf 1;
+if ! is_package_installed arcolinux-bootloader-systemd-boot-git && ! is_package_installed arcolinux-bootloader-grub-git; then
+    echo
+    echo "YOU ARE NOT SAFE YET - INSTALL THE CORRECT PACKAGE"
+    echo
+fi
+tput sgr0
+
+if systemctl --all --type service | grep -q "virtual-machine-check";then
+    systemctl disable virtual-machine-check.service
+fi
+sh /usr/local/bin/arcolinux-lsb-release
+sh /usr/local/bin/arcolinux-os-release
 }
 
 pre_remove() {

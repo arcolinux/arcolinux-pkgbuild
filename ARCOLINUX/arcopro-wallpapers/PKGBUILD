@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcopro-wallpapers
+_pkgname=arcopro-wallpapers
+_destname1="/usr/share/backgrounds/arco/"
+_licensedir="/usr/share/arco/licenses/"
+pkgver=24.04
+pkgrel=03
+pkgdesc="Wallpapers for arcopro"
+arch=('any')
+url="https://github.com/arconetpro/arcopro-wallpapers"
+license=('GPL3')
+makedepends=('git')
+conflicts=('arconet-wallpapers')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arconetpro/${_pkgname}.git")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
