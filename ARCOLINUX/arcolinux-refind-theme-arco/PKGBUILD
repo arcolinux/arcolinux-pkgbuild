@@ -2,10 +2,10 @@
 pkgname=arcolinux-refind-theme-arco-git
 _pkgname=arcolinux-refind-theme-arco
 destinationdir1="/boot/efi/EFI/refind/themes/"
-destinationdir2="/usr/share/refind/themes/"
+#destinationdir2="/usr/share/refind/themes/"
 _licensedir="/usr/share/arcolinux/licenses/"
 pkgver=24.04
-pkgrel=01
+pkgrel=18
 pkgdesc="ArcoLinux default refind theme"
 arch=(any)
 url="https://github.com/arcolinux/arcolinux-refind-theme-arco"

@@ -3,6 +3,15 @@
 #https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot
 #https://archlinux.org/news/git-migration-completed/
 #https://wiki.archlinux.org/title/DeveloperWiki:HOWTO_Be_A_Packager
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light gray
 
 destination1=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo/x86_64/"
 destination2=$HOME"/ARCO/ARCOLINUX-REPO/arcolinux_repo_3party/x86_64/"
@@ -57,6 +66,7 @@ if [[ $CHOICE == "1" ]] ; then
 
   echo "Signing the package"
   echo "#############################################################################################"
+
   gpg --detach-sign $search*pkg.tar.zst
 
 else
@@ -69,11 +79,12 @@ else
   makepkg --sign
 fi
 
-
 echo "Moving created files to " $destiny
 echo "#############################################################################################"
+
 mv -n $search*pkg.tar.zst $destiny
 mv -n $search*pkg.tar.zst.sig $destiny
+
 echo "Cleaning up"
 echo "#############################################################################################"
 echo "deleting unnecessary folders"

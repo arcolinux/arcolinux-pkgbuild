@@ -7,8 +7,8 @@ _destname2="/etc/skel/.bin/"
 #_destname4="/usr/share/man/man1/"
 _destname5="/usr/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.03
-pkgrel=06
+pkgver=24.10
+pkgrel=02
 pkgdesc="Configuration files for ArcoLinux Iso"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-chadwm-nemesis"
@@ -18,10 +18,11 @@ depends=('xorg-server'
 			 'xorg-xsetroot'
 			 'feh'
 			 'wget'
-			 'rofi'
 			 'arcolinux-rofi-git'
 			 'arcolinux-rofi-themes-git'
 			 'acpi'
+			 'maim'
+			 'xclip'
 			 'imlib2'
 			 'slock'
 			 'imlib2'

@@ -49,37 +49,51 @@ arcolinux-awesome-git \
 arcolinux-berry-git \
 arcolinux-bspwm-git \
 arcolinux-budgie-git \
+arcolinux-chadwm-git \
+arcolinux-chadwm-nemesis-git \
 arcolinux-cinnamon-git \
 arcolinux-cutefish-git \
 arcolinux-cwm-git \
 arcolinux-deepin-git \
+arcolinux-dk-git
 arcolinux-dusk-git \
+arcolinux-dusk-nemesis-git \
 arcolinux-dwm-git \
 arcolinux-dwm-nemesis-git \
 arcolinux-enlightenment-git \
 arcolinux-fvwm3-git \
 arcolinux-gnome-git \
 arcolinux-herbstluftwm-git \
+arcolinux-hyprland-git \
+arcolinux-hyprland-nemesis-git \
+arcolinux-i3wm-db-nemesis-git \
+arcolinux-i3wm-forest-git \
 arcolinux-i3wm-git \
 arcolinux-icewm-git \
 arcolinux-jwm-git \
 arcolinux-leftwm-git \
 arcolinux-lxqt-git \
 arcolinux-mate-git \
-arcolinux-openboxb-git \
+arcolinux-nimdow-git \
+arcolinux-nimdow-nemesis-git \
 arcolinux-openbox-git \
 arcolinux-openbox-xtended-git \
+arcolinux-openboxb-git \
 arcolinux-plasma-git \
 arcolinux-plasma-nemesis-git \
+arcolinux-qtile-distrotube-git \
 arcolinux-qtile-git \
 arcolinux-spectrwm-git \
 arcolinux-sway-git \
 arcolinux-ukui-git \
-arcolinux-worm-git \
+arcolinux-wayfire-git \
+arcolinux-wayfire-nemesis-git \
 arcolinux-wmderland-git \
-arcolinux-xfce-git \
+arcolinux-worm-git \
 arcolinux-xmonad-polybar-git \
 arcolinux-xmonad-xmobar-git \
+arconet-xfce \
+arconet-xfce-nemesis
 "
 
 if [[ "$response" == [yY] ]]; then

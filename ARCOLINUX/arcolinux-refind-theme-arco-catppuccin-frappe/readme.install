@@ -1,0 +1,27 @@
+post_install() {
+    echo -e "\n** The files have been installed in /boot/efi/EFI/refind/themes/ **\n"
+ 
+    if grep -q "^include themes" /boot/efi/EFI/refind/refind.conf; then
+        echo -e "\n** We have hidden the current theme. **\n"
+        sed -i "s/^include/#include/" /boot/efi/EFI/refind/refind.conf
+    fi
+
+    if grep -q "#include themes/arco-catppuccin-frappe/theme.conf" /boot/efi/EFI/refind/refind.conf; then
+        sed -i "s/#include themes\/arco-catppuccin-frappe\/theme.conf/include themes\/arco-catppuccin-frappe\/theme.conf/" /boot/efi/EFI/refind/refind.conf
+    else
+        echo -e "\n** We are adding the theme to /boot/efi/EFI/refind/refind.conf. **\n"
+        echo -e '\ninclude themes/arco-catppuccin-frappe/theme.conf' >> /boot/efi/EFI/refind/refind.conf
+    fi
+}
+
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo -e "\n** The files have been removed from /boot/efi/EFI/refind/themes **\n"
+    if grep -q "include themes/arco-catppuccin-frappe/theme.conf" /boot/efi/EFI/refind/refind.conf; then
+        sed -i "/^include themes\/arco-catppuccin-frappe\/theme.conf/d" /boot/efi/EFI/refind/refind.conf
+    fi
+}

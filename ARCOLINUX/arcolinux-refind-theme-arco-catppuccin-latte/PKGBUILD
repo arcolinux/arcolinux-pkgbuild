@@ -1,0 +1,30 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-refind-theme-arco-catppuccin-latte-git
+_pkgname=arcolinux-refind-theme-arco-catppuccin-latte
+destinationdir1="/boot/efi/EFI/refind/themes/"
+#destinationdir2="/usr/share/refind/themes/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.04
+pkgrel=14
+pkgdesc="ArcoLinux refind theme catppuccin"
+arch=(any)
+url="https://github.com/arcolinux/arcolinux-refind-theme-arco-catppuccin-latte"
+license=('GPL3')
+optdepends=()
+makedepends=('git')
+depends=()
+install=readme.install
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::git+${url})
+md5sums=('SKIP')
+package() {
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	cp -r "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${destinationdir1}"
+	cp -r "${srcdir}/${_pkgname}/${destinationdir1}/"* "${pkgdir}${destinationdir1}"
+	chmod -R 700 "$pkgdir"/boot/efi/
+	#mkdir -p "${pkgdir}${destinationdir2}"
+	#cp -r "${srcdir}/${_pkgname}/${destinationdir2}/"* "${pkgdir}${destinationdir2}"
+}

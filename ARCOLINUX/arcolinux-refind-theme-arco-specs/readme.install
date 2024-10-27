@@ -1,15 +1,16 @@
 post_install() {
     echo -e "\n** The files have been installed in /boot/efi/EFI/refind/themes/ **\n"
-    
-    if grep -q "include themes/arco-refind-specs/theme.conf" /boot/efi/EFI/refind/refind.conf; then
-        echo -e "\n** Arco-refind-specs theme already added. **\n"
+ 
+    if grep -q "^include themes" /boot/efi/EFI/refind/refind.conf; then
+        echo -e "\n** We have hidden the current theme. **\n"
+        sed -i "s/^include/#include/" /boot/efi/EFI/refind/refind.conf
+    fi
+
+    if grep -q "#include themes/arco-refind-specs/theme.conf" /boot/efi/EFI/refind/refind.conf; then
+        sed -i "s/#include themes\/arco-refind-specs\/theme.conf/include themes\/arco-refind-specs\/theme.conf/" /boot/efi/EFI/refind/refind.conf
     else
-        if grep -q "^include themes" /boot/efi/EFI/refind/refind.conf; then
-            echo -e "\n** We have hidden the current theme. **\n"
-            sed -i "s/^include/#include/" /boot/efi/EFI/refind/refind.conf
-        fi
-        echo -e "\n** We are adding the arco-refind-specs theme to /boot/efi/EFI/refind/refind.conf. **\n"
-        echo 'include themes/arco-refind-specs/theme.conf' >> /boot/efi/EFI/refind/refind.conf
+        echo -e "\n** We are adding the theme to /boot/efi/EFI/refind/refind.conf. **\n"
+        echo -e '\ninclude themes/arco-refind-specs/theme.conf' >> /boot/efi/EFI/refind/refind.conf
     fi
 }
 

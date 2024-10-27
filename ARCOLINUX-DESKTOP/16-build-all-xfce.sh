@@ -45,9 +45,8 @@ read response
 #arcolinux-enlightenment-git \
 
 array="
-arcolinux-xfce-git \
-arcolinux-xfce-nemesis-git \
-arcolinux-xfce-prime-git
+arconet-xfce \
+arconet-xfce-nemesis \
 "
 
 if [[ "$response" == [yY] ]]; then

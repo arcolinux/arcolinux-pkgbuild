@@ -1,0 +1,69 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-dwm-st-nemesis-git
+_pkgname=arcolinux-dwm-st-nemesis
+_destname1="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=24.07
+pkgrel=02
+pkgdesc="A simple virtual terminal emulator for X on ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-dwm-st-nemesis"
+license=('GPL3')
+makedepends=('git')
+depends=(libxft)
+conflicts=('st' 'arcolinux-dwm-st-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git"
+	    terminfo.patch
+        README.terminfo.rst)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+install='readme.install'
+_sourcedir=$_pkgname/etc/skel/.config/arco-st/
+
+prepare() {
+  patch -d "$_sourcedir" -p 0 < terminfo.patch
+
+  # This package provides a mechanism to provide a custom config.h. Multiple
+  # configuration states are determined by the presence of two files in
+  # $BUILDDIR:
+  #
+  # config.h  config.def.h  state
+  # ========  ============  =====
+  # absent    absent        Initial state. The user receives a message on how
+  #                         to configure this package.
+  # absent    present       The user was previously made aware of the
+  #                         configuration options and has not made any
+  #                         configuration changes. The package is built using
+  #                         default values.
+  # present                 The user has supplied his or her configuration. The
+  #                         file will be copied to $_sourcedir and used during
+  #                         build.
+  #
+  # After this test, config.def.h is copied from $_sourcedir to $BUILDDIR to
+  # provide an up to date template for the user.
+  if [ -e "$BUILDDIR/config.h" ]
+  then
+    cp "$BUILDDIR/config.h" "$_sourcedir"
+  elif [ ! -e "$BUILDDIR/config.def.h" ]
+  then
+    echo \
+      'This package can be configured in config.h. Copy the config.def.h that' \
+      'was just placed into the package directory to config.h and modify it' \
+      'to change the configuration. Or just leave it alone to continue to use' \
+      'default values.'
+  fi
+  cp "$_sourcedir/config.def.h" "$BUILDDIR"
+}
+
+package() {
+
+    cd "$srcdir/$_pkgname/etc/skel/.config/arco-st"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

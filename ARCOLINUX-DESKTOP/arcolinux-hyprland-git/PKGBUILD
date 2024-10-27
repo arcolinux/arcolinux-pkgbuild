@@ -5,10 +5,9 @@ _destname1="/etc/skel/.config/"
 _destname2="/etc/skel/.bin/"
 _destname3="/etc/pacman.d/hooks/"
 _destname4="/usr/bin/"
-_destname5="/etc/skel/.cache/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.04
-pkgrel=02
+pkgver=24.10
+pkgrel=03
 pkgdesc="Desktop configuration for ArcoLinux -D -B"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-hyprland"
@@ -36,7 +35,4 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname4}
 	cp -r  ${srcdir}/${_pkgname}${_destname4}* ${pkgdir}${_destname4}
-
-	#install -dm755 ${pkgdir}${_destname5}
-	#cp -r  ${srcdir}/${_pkgname}${_destname5}* ${pkgdir}${_destname5}
 }
