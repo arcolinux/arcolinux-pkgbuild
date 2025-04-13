@@ -1,0 +1,39 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-qtile-wayland-nemesis-git
+_pkgname=arcolinux-qtile-wayland-nemesis
+_destname1="/etc/skel/.config/qtile/"
+_destname2="/etc/skel/.bin/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=25.01
+pkgrel=25
+pkgdesc="Desktop configuration for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-qtile-wayland-nemesis"
+license=('GPL3')
+makedepends=('git')
+depends=(
+'qtile'
+'python-pywlroots'
+'wofi'
+'swaybg'
+'grim'
+'python-pywal'
+'foot'
+'arcolinux-foot-git'
+'mission-center')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+conflicts=('arcolinux-qtile-git' 'arcolinux-qtile-nemesis-git' 'arcolinux-qtile-distrotube-git' 'arcolinux-qtile-wayland-git')
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+}

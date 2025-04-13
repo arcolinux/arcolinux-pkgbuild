@@ -1,0 +1,15 @@
+post_install() {
+    # Compare the files and copy only if they differ
+	if ! cmp -s /etc/pacman-arcoinstall.conf /etc/pacman.conf; then
+	    echo "Checking the new /etc/pacman.conf"
+	    echo "Making a backup of your current /etc/pacman.conf"
+	    echo "to /etc/pacman.conf.backup"
+	    cp /etc/pacman.conf /etc/pacman.conf.backup
+	    echo "Files differ. Copying /etc/pacman-arcoinstall.conf to /etc/pacman.conf"
+	    cp /etc/pacman-arcoinstall.conf /etc/pacman.conf
+	fi
+}
+
+post_upgrade() {
+	post_install
+}

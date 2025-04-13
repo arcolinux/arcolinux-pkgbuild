@@ -1,0 +1,42 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-niri-git
+_pkgname=arcolinux-niri
+_destname1="/etc/skel/.config/"
+_destname2="/etc/skel/.bin/"
+_destname3="/etc/pacman.d/hooks/"
+_destname4="/usr/bin/"
+#_destname5="/etc/skel/.cache/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=25.02
+pkgrel=36
+pkgdesc="Desktop configuration for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-niri"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=("arcolinux-niri-nemesis-git")
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	cp -r  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
+
+	install -dm755 ${pkgdir}${_destname3}
+	cp -r  ${srcdir}/${_pkgname}${_destname3}* ${pkgdir}${_destname3}
+
+	install -dm755 ${pkgdir}${_destname4}
+	cp -r  ${srcdir}/${_pkgname}${_destname4}* ${pkgdir}${_destname4}
+
+	#install -dm755 ${pkgdir}${_destname5}
+	#cp -r  ${srcdir}/${_pkgname}${_destname5}* ${pkgdir}${_destname5}
+}

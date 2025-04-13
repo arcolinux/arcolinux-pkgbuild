@@ -3,16 +3,21 @@ pkgname=arcolinux-gtk-surfn-arc-git
 _pkgname=arcolinux-gtk-surfn-arc
 _destname1="/etc/skel/.config/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.05
+pkgver=25.01
 pkgrel=05
-pkgdesc="Gtk3 config for ArcoLinux"
+pkgdesc="Gtk config for ArcoLinux"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-gtk-surfn-arc"
 license=('GPL3')
 makedepends=('git')
 depends=('bash')
 replaces=('arcolinux-gtk3-surfn-arc-git')
-conflicts=('arcolinux-gtk3-surfn-arc-breeze-git' 'arcolinux-gtk3-sardi-arc-git' 'arcolinux-gtk3-surfn-plasma-dark-git')
+conflicts=(
+'arcolinux-gtk-arcolinux-candy-beauty-git'
+'arcolinux-gtk-sardi-arc-git'
+'arcolinux-gtk-surfn-arc-breeze-git'
+'arcolinux-gtk-surfn-plasma-dark-git'
+)
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")

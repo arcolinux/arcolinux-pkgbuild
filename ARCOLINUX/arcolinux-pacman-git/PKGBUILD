@@ -1,0 +1,27 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-pacman-git
+_pkgname=arcolinux-pacman
+_destname1="/etc/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=25.01
+pkgrel=03
+pkgdesc="Pacman configuration for Arcoinstall"
+arch=('x86_64')
+url="https://github.com/arconetpro/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('arcoinstall-pacman-git')
+backup=('etc/pacman.conf')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::git+${url})
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir/$_destname1"
+  cp -r ${srcdir}/${pkgname}/pacman-arcolinux.conf "$pkgdir/$_destname1/pacman-arcolinux.conf"
+}

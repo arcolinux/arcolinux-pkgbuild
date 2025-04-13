@@ -1,0 +1,27 @@
+post_install() {
+
+	ORIGINAL="/etc/pacman.conf"
+	BACKUP="/etc/pacman.conf.backup.final"
+	FINAL_SOURCE="/usr/local/share/arcolinux/final/pacman.conf"
+
+	# Backup current pacman.conf
+	if [[ -f "$ORIGINAL" ]]; then
+	    cp "$ORIGINAL" "$BACKUP"
+	    echo "✔ Backup created at $BACKUP"
+	else
+	    echo "⚠ No original pacman.conf found at $ORIGINAL"
+	fi
+
+	# Replace with final version
+	if [[ -f "$FINAL_SOURCE" ]]; then
+	    cp "$FINAL_SOURCE" "$ORIGINAL"
+	    echo "✔ Replaced pacman.conf with final version from $FINAL_SOURCE"
+	else
+	    echo "❌ Final pacman.conf not found at $FINAL_SOURCE"
+	    exit 1
+	fi
+}
+
+post_upgrade() {
+	post_install
+}

@@ -2,10 +2,11 @@
 pkgname=arcolinux-mirrorlist-git
 _pkgname=arcolinux-mirrorlist
 _destname1="/etc/pacman.d/"
+_destname2="/usr/local/share/arcolinux/final/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.03
-pkgrel=12
-pkgdesc="ArcoLinux mirrorlist"
+pkgver=25.04
+pkgrel=05
+pkgdesc="ArcoLinux mirrorlist final"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-mirrorlist"
 license=('GPL3')
@@ -17,10 +18,14 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
 sha256sums=('SKIP')
 #backup=(etc/pacman.d/arcolinux-mirrorlist)
+install='readme.install'
 package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
 	install -dm755 ${pkgdir}${_destname1}
 	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+
+	install -dm755 ${pkgdir}${_destname2}
+	install -m644  ${srcdir}/${_pkgname}${_destname2}* ${pkgdir}${_destname2}
 }

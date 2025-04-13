@@ -3,7 +3,7 @@ pkgname=arcolinux-local-xfce4-git
 _pkgname=arcolinux-local-xfce4
 _destname1="/etc/skel/.local/share/xfce4/helpers/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=23.06
+pkgver=25.02
 pkgrel=01
 pkgdesc="Configuration for .local folder"
 arch=('any')
@@ -21,6 +21,7 @@ package() {
 	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
 
-	install -dm755 ${pkgdir}${_destname1}
-	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	# is pointing to urxvt - removing for now
+	#install -dm755 ${pkgdir}${_destname1}
+	#install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

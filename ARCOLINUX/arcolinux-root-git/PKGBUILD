@@ -3,8 +3,8 @@ pkgname=arcolinux-root-git
 _pkgname=arcolinux-root
 _destname1="/etc/skel/"
 _licensedir="/usr/share/arcolinux/licenses/"
-pkgver=24.09
-pkgrel=01
+pkgver=25.02
+pkgrel=10
 pkgdesc="root configs from ArcoLinux"
 arch=('any')
 url="https://github.com/arcolinux/arcolinux-root"
@@ -22,7 +22,6 @@ package() {
 
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}.bashrc-latest ${pkgdir}${_destname1}
-	cp -r  ${srcdir}/${_pkgname}${_destname1}.conkyrc ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}.dmrc ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}.face ${pkgdir}${_destname1}
 	cp -r  ${srcdir}/${_pkgname}${_destname1}.gtkrc-2.0 ${pkgdir}${_destname1}

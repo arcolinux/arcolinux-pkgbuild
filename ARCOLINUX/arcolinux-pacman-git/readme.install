@@ -1,0 +1,8 @@
+post_install() {
+    # Compare the files and copy only if they differ
+	if ! cmp -s /etc/pacman-arcolinux.conf /etc/pacman.conf; then
+	    echo "Files differ. Copying /etc/pacman-arcolinux.conf to /etc/pacman.conf"
+	    cp /etc/pacman-arcolinux.conf /etc/pacman.conf
+	fi
+}
+

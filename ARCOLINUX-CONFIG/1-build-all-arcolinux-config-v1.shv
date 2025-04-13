@@ -10,15 +10,20 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
-echo "#################################################"
-echo
-echo "This builds all the existing pkgbuilds"
+# Automatically set the year and month for versioning
+YEAR=$(date +%y)   # Gets the current year in two digits, e.g., 25 for 2025
+MONTH=$(date +%m)  # Gets the current month in two digits, e.g., 01 for January
+
+# Combine year and month into version format
+PKG_VERSION="${YEAR}.${MONTH}"
+
+echo "#############################################################################################"
+echo "This builds all the existing PKGBUILDs"
 echo "Scans the existing folders"
 echo "Be sure you have the highest number for all of them"
-echo
-echo "#################################################"
-echo "Give the pkgversion number like 24.01"
-echo "#################################################"
+echo "#############################################################################################"
+echo "Using pkgversion number like ${PKG_VERSION}"
+echo "#############################################################################################"
 
 read pkgver
 

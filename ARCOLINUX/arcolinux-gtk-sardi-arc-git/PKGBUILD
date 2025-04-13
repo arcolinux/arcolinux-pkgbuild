@@ -1,0 +1,32 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=arcolinux-gtk-sardi-arc-git
+_pkgname=arcolinux-gtk-sardi-arc
+_destname1="/etc/skel/.config/"
+_licensedir="/usr/share/arcolinux/licenses/"
+pkgver=25.01
+pkgrel=05
+pkgdesc="Gtk config for ArcoLinux"
+arch=('any')
+url="https://github.com/arcolinux/arcolinux-gtk-sardi-arc"
+license=('GPL3')
+makedepends=('git')
+depends=('bash')
+replaces=('arcolinux-gtk3-sardi-arc-git')
+conflicts=(
+'arcolinux-gtk-arcolinux-candy-beauty-git'
+'arcolinux-gtk-surfn-arc-breeze-git'
+'arcolinux-gtk-surfn-arc-git'
+'arcolinux-gtk-surfn-plasma-dark-git'
+)
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/arcolinux/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

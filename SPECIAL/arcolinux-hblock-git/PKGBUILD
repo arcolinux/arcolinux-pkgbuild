@@ -9,8 +9,8 @@ _destname_icons="/usr/share/icons/hicolor/scalable/apps/"
 _destnamesystem="/etc/systemd/system/"
 _destnamelists="/etc/hblock"
 _licensedir="/usr/share/licenses/"
-pkgver=3.5.0
-pkgrel=1
+pkgver=3.5.1
+pkgrel=2
 pkgdesc="An adblocker that creates a hosts file from automatically downloaded blacklists from Héctor Molinero Fernández"
 arch=('any')
 url="https://github.com/hectorm/hblock"
@@ -25,7 +25,7 @@ options=(!strip !emptydirs)
 source=("https://github.com/hectorm/hblock/archive/v${pkgver}.tar.gz"
 		"advert-block.desktop"
 		"arcolinux-advert-block.svg")
-sha256sums=('99de5c6231f2495efaecf53db957272d216c652c2fb795c8d30a2f2e490e8098'
+sha256sums=('af98a6753e5de1406b63cd1fabf4b3eae84816168c532dae40c83092acb69941'
             'f931f66d931969dd426cee762cc292cd5810ab2d715aa8f925fe5a9bce8844a8'
             '2f011d0563c868c364a6efa1c5c5f2e9ffbfe82a0dc605a0c726d3ad14ca669d')
 install='readme.install'
@@ -51,6 +51,7 @@ package() {
 	touch "${pkgdir}${_destnamelists}"/allow.list
 	echo "analytics.google.com" | tee "${pkgdir}${_destnamelists}"/allow.list
 	echo "marketingplatform.google.com" | tee -a "${pkgdir}${_destnamelists}"/allow.list
+	echo "click.discord.com" | tee -a "${pkgdir}${_destnamelists}"/allow.list
 	touch "${pkgdir}${_destnamelists}"/deny.list
 	install -d -m755 "${pkgdir}${_destname_desktop}"
 	install -m644 "${srcdir}/advert-block.desktop" "$pkgdir/usr/share/applications/"
